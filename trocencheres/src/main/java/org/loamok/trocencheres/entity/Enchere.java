@@ -22,19 +22,10 @@ import lombok.NoArgsConstructor;
 @Builder
 @EqualsAndHashCode
 @Entity
-@Table(name = "ADDRESSES")
-public class Adresse {
+@Table(name = "ENCHERES")
+public class Enchere {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "no_adresse")
+    @Column(name = "id_enchere")
     private Integer id;
-    @Column(name = "rue", nullable = false, length = 100)
-    private String rue;
-    @Column(name = "code_postal", nullable = false, length = 10)
-    private String codePostal;
-    @Column(name = "city", nullable = false, length = 50)
-    private String ville;
-    @Column(name = "adresse_eni", nullable = false)
-    private Boolean adresseEni;
-    
 }
