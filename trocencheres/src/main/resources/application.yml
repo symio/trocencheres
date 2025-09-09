@@ -1,0 +1,16 @@
+server.port: 8080
+#Connection to DB
+spring:
+  profiles.active: secrets
+  messages:
+    encoding: UTF-8
+  web:
+    locale: en
+  datasource:
+    url: jdbc:sqlserver://localhost;databasename=BD_TROCENCHERES;integratedSecurity=false;encrypt=true;trustServerCertificate=true
+#Options to DB
+  jpa:
+    show-sql: true
+    hibernate:
+#      ddl-auto: create
+      ddl-auto: update

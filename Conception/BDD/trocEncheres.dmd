@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="trocEncheres" id="145C597E-A9C4-5E1E-F47D-AA5799624DC6" version="3.5">
+<createdBy>symio</createdBy>
+<createdTime>2025-09-09 11:30:14 UTC</createdTime>
+<ownerDesignName>trocEncheres</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>145C597E-A9C4-5E1E-F47D-AA5799624DC6</designId>
+</OSDM_Design>

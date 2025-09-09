@@ -1,0 +1,87 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="BBA95C9A-B80B-D6B2-55A0-A3572F2A2BCD" name="ROLE">
+<createdBy>symio</createdBy>
+<createdTime>2025-09-09 13:03:10 UTC</createdTime>
+<ownerDesignName>trocEncheres</ownerDesignName>
+<engineerTo>
+<item key="B1C98E81-8B7A-85DA-4D37-9E6CE2558026" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_role" id="59A36223-71AC-3232-5A58-FAB1CCAFBDDB">
+<createdBy>symio</createdBy>
+<createdTime>2025-09-09 13:03:10 UTC</createdTime>
+<ownerDesignName>trocEncheres</ownerDesignName>
+<importedID>D362C55F-DA64-372A-66D5-2D1879FF55C5</importedID>
+<engineerTo>
+<item key="B1C98E81-8B7A-85DA-4D37-9E6CE2558026" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="role" id="DA64299A-73B9-501C-AEF6-ABD8B6042D7B">
+<createdBy>symio</createdBy>
+<createdTime>2025-09-09 13:03:10 UTC</createdTime>
+<ownerDesignName>trocEncheres</ownerDesignName>
+<importedID>6E7A9CEB-37CD-6C9C-133B-41B3F2EBEE61</importedID>
+<engineerTo>
+<item key="B1C98E81-8B7A-85DA-4D37-9E6CE2558026" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="is_admin" id="922C6B5F-9434-8B40-14E4-8A38C3422472">
+<createdBy>symio</createdBy>
+<createdTime>2025-09-09 13:03:10 UTC</createdTime>
+<commentInRDBMS><![CDATA[DEFAULT 0]]></commentInRDBMS>
+<ownerDesignName>trocEncheres</ownerDesignName>
+<importedID>76B2C4E4-48E4-505F-265A-56C139BAE930</importedID>
+<engineerTo>
+<item key="B1C98E81-8B7A-85DA-4D37-9E6CE2558026" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1 BYTE</dataTypeSize>
+<ownDataTypeParameters>1 BYTE,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="816198E5-9C4E-300E-59B3-134A5FF04AA6" name="uc_role_is_admin">
+<createdBy>symio</createdBy>
+<createdTime>2025-09-09 13:03:10 UTC</createdTime>
+<ownerDesignName>trocEncheres</ownerDesignName>
+<engineerTo>
+<item key="B1C98E81-8B7A-85DA-4D37-9E6CE2558026" value="true"/>
+</engineerTo>
+<usedAttributes>
+<attributeRef>DA64299A-73B9-501C-AEF6-ABD8B6042D7B</attributeRef>
+<attributeRef>922C6B5F-9434-8B40-14E4-8A38C3422472</attributeRef>
+</usedAttributes>
+</identifier>
+<identifier id="3BFC6E65-59A3-DE84-A8FB-EBE7EAEA2BB5" name="ROLE PK">
+<createdBy>symio</createdBy>
+<createdTime>2025-09-09 13:03:10 UTC</createdTime>
+<ownerDesignName>trocEncheres</ownerDesignName>
+<engineerTo>
+<item key="B1C98E81-8B7A-85DA-4D37-9E6CE2558026" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>59A36223-71AC-3232-5A58-FAB1CCAFBDDB</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

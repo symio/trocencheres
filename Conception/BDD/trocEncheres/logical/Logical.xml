@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<LogicalDesign class="oracle.dbtools.crest.model.design.logical.LogicalDesign" name="Logical" id="B032F20A-5DBC-F399-FD5C-45CFCC5C0198" mainViewID="0B7375A6-89ED-D6A4-7138-0D2719DD6F94">
+<createdBy>symio</createdBy>
+<createdTime>2025-09-09 11:30:14 UTC</createdTime>
+<ownerDesignName>trocEncheres</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+</LogicalDesign>

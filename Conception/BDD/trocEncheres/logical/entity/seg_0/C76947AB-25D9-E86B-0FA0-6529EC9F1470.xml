@@ -1,0 +1,103 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="C76947AB-25D9-E86B-0FA0-6529EC9F1470" name="ADRESSE">
+<createdBy>symio</createdBy>
+<createdTime>2025-09-09 13:03:10 UTC</createdTime>
+<ownerDesignName>trocEncheres</ownerDesignName>
+<engineerTo>
+<item key="B1C98E81-8B7A-85DA-4D37-9E6CE2558026" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="no_adresse" id="6FBEE6FD-7282-D7A6-9EE2-1A68AA9CAA3D">
+<createdBy>symio</createdBy>
+<createdTime>2025-09-09 13:03:10 UTC</createdTime>
+<ownerDesignName>trocEncheres</ownerDesignName>
+<importedID>EA6991C7-EE93-00BD-1723-67C48745388D</importedID>
+<engineerTo>
+<item key="B1C98E81-8B7A-85DA-4D37-9E6CE2558026" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="rue" id="7E83E3A9-F399-16F9-FB9A-0C5442F42E30">
+<createdBy>symio</createdBy>
+<createdTime>2025-09-09 13:03:10 UTC</createdTime>
+<ownerDesignName>trocEncheres</ownerDesignName>
+<importedID>1B620D6D-9540-7AF3-134E-D709E1ED1328</importedID>
+<engineerTo>
+<item key="B1C98E81-8B7A-85DA-4D37-9E6CE2558026" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="code_postal" id="C14E70DC-A761-C225-0635-967485608FE1">
+<createdBy>symio</createdBy>
+<createdTime>2025-09-09 13:03:10 UTC</createdTime>
+<ownerDesignName>trocEncheres</ownerDesignName>
+<importedID>3C1D52ED-9BC5-25D4-0CA0-3D6E7F6F3A5A</importedID>
+<engineerTo>
+<item key="B1C98E81-8B7A-85DA-4D37-9E6CE2558026" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="ville" id="F3F786F0-8A42-DD46-3A3C-BC906DBCF1DC">
+<createdBy>symio</createdBy>
+<createdTime>2025-09-09 13:03:10 UTC</createdTime>
+<ownerDesignName>trocEncheres</ownerDesignName>
+<importedID>6CCAB2D0-7D06-B44C-2704-C842971CAD1B</importedID>
+<engineerTo>
+<item key="B1C98E81-8B7A-85DA-4D37-9E6CE2558026" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="adresse_eni" id="5437EFD2-8543-7590-3076-C0D838ABAAD3">
+<createdBy>symio</createdBy>
+<createdTime>2025-09-09 13:03:10 UTC</createdTime>
+<commentInRDBMS><![CDATA[DEFAULT 0]]></commentInRDBMS>
+<ownerDesignName>trocEncheres</ownerDesignName>
+<importedID>972B1F3E-972B-E696-DA27-3F42A45E866A</importedID>
+<engineerTo>
+<item key="B1C98E81-8B7A-85DA-4D37-9E6CE2558026" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1 BYTE</dataTypeSize>
+<ownDataTypeParameters>1 BYTE,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="0CF24FF5-8344-ACDA-DDBC-CA98F0768F45" name="ADRESSE PK">
+<createdBy>symio</createdBy>
+<createdTime>2025-09-09 13:03:10 UTC</createdTime>
+<ownerDesignName>trocEncheres</ownerDesignName>
+<engineerTo>
+<item key="B1C98E81-8B7A-85DA-4D37-9E6CE2558026" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>6FBEE6FD-7282-D7A6-9EE2-1A68AA9CAA3D</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

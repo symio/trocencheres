@@ -1,0 +1,193 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="92187ADE-C106-F0E3-B51E-0F8AB22E3A96" name="UTILISATEURS">
+<createdBy>symio</createdBy>
+<createdTime>2025-09-09 13:04:05 UTC</createdTime>
+<generatorID>6E53F803-924D-02EF-A220-FDCE140FFB05</generatorID>
+<ownerDesignName>trocEncheres</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="pseudo" id="0B32A3BE-8B25-8E8F-DE2A-A81F5C62EE94">
+<createdBy>symio</createdBy>
+<createdTime>2025-09-09 13:04:05 UTC</createdTime>
+<generatorID>7A412066-AD02-75FB-AA50-762040C9AAA5</generatorID>
+<ownerDesignName>trocEncheres</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ADRESSE_no_adresse" id="1B86756A-D6F0-D7E5-DBF8-794908008C4E">
+<createdBy>symio</createdBy>
+<createdTime>2025-09-09 13:04:05 UTC</createdTime>
+<generatorID>80E506A3-1A4C-BBF1-DD44-254DE80EC9C8</generatorID>
+<ownerDesignName>trocEncheres</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="619DCA42-8F2D-FFC6-248A-60A3563A8171" referredColumn="8B559887-8D48-F295-4F21-278E8A763B29"/>
+</associations>
+</Column>
+<Column name="nom" id="7D8E9DD1-66B2-D1E9-19FF-A8D098EBF71F">
+<createdBy>symio</createdBy>
+<createdTime>2025-09-09 13:04:05 UTC</createdTime>
+<generatorID>564F59FA-5888-699E-0A76-5EAA7D60548E</generatorID>
+<ownerDesignName>trocEncheres</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
+<dataTypeSize>40</dataTypeSize>
+<ownDataTypeParameters>40,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="prenom" id="9087D709-3B0F-F20A-372F-9DE9D64172FF">
+<createdBy>symio</createdBy>
+<createdTime>2025-09-09 13:04:05 UTC</createdTime>
+<generatorID>87AF6E96-4E7C-D9E4-6924-7B7C9837A6E9</generatorID>
+<ownerDesignName>trocEncheres</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="email" id="EC491948-AD25-B096-B799-19BE2455A4DC">
+<createdBy>symio</createdBy>
+<createdTime>2025-09-09 13:04:05 UTC</createdTime>
+<generatorID>6DA5FFCD-B1BA-8E4D-4A10-71071D6518CD</generatorID>
+<ownerDesignName>trocEncheres</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="telephone" id="71B76820-4A5A-D1EA-C6B4-2432CA5D25A5">
+<createdBy>symio</createdBy>
+<createdTime>2025-09-09 13:04:05 UTC</createdTime>
+<generatorID>CE991BA8-ADB9-2F7B-6C71-E8C069E64BEF</generatorID>
+<ownerDesignName>trocEncheres</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
+<dataTypeSize>15</dataTypeSize>
+<ownDataTypeParameters>15,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="mot_de_passe" id="1890AE06-80B4-306A-E319-04719DB0FE6C">
+<createdBy>symio</createdBy>
+<createdTime>2025-09-09 13:04:05 UTC</createdTime>
+<generatorID>3657469F-CE38-4022-09AF-0C21F0043551</generatorID>
+<ownerDesignName>trocEncheres</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
+<dataTypeSize>68</dataTypeSize>
+<ownDataTypeParameters>68,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="credit" id="299BAAD1-4B21-8299-60CB-CC99C0BDBE91">
+<createdBy>symio</createdBy>
+<createdTime>2025-09-09 13:04:05 UTC</createdTime>
+<commentInRDBMS><![CDATA[DEFAULT 10]]></commentInRDBMS>
+<generatorID>84E6EB64-9152-18DF-D151-D0F0AE94CCAE</generatorID>
+<ownerDesignName>trocEncheres</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ROLE_role" id="93062D36-C283-8090-2ACB-684D6FC5FC9C">
+<createdBy>symio</createdBy>
+<createdTime>2025-09-09 13:04:05 UTC</createdTime>
+<generatorID>995E1779-A4CC-AD83-C824-D39145936801</generatorID>
+<ownerDesignName>trocEncheres</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="49227336-C8EB-E0CE-979B-E20EC6886B84" referredColumn="F2D79A38-4EEA-94C6-45B6-1E99C9158CFD"/>
+</associations>
+</Column>
+<Column name="ROLE_is_admin" id="822C7467-AF82-469B-3D72-D3E74D3D5744">
+<createdBy>symio</createdBy>
+<createdTime>2025-09-09 13:04:05 UTC</createdTime>
+<generatorID>558527BB-9452-C44C-08B4-A0BCA3CDFD5C</generatorID>
+<ownerDesignName>trocEncheres</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1 BYTE</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="49227336-C8EB-E0CE-979B-E20EC6886B84" referredColumn="FFCBADA2-D14A-176D-80D0-45FE0D71EFCD"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="D711AF62-5D6D-A5D6-1433-6223D5E346CB" name="UTILISATEURS_PK">
+<createdBy>symio</createdBy>
+<createdTime>2025-09-09 13:04:05 UTC</createdTime>
+<generatorID>B36AAB9A-E779-B686-E5C1-4AFF391CC4D0</generatorID>
+<ownerDesignName>trocEncheres</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0B32A3BE-8B25-8E8F-DE2A-A81F5C62EE94"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="A3FB64D5-BE64-4CD2-B22E-48C164424F34" name="UTILISATEURS_pseudo_email_UN">
+<createdBy>symio</createdBy>
+<createdTime>2025-09-09 13:04:05 UTC</createdTime>
+<generatorID>3C8ECEAB-4CA8-447E-A53D-3ECDC9962476</generatorID>
+<ownerDesignName>trocEncheres</ownerDesignName>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0B32A3BE-8B25-8E8F-DE2A-A81F5C62EE94"/>
+<colUsage columnID="EC491948-AD25-B096-B799-19BE2455A4DC"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="3C5AD936-1195-FC2F-15CD-F207A609A257" name="UTILISATEURS_ADRESSE_FK">
+<createdBy>symio</createdBy>
+<createdTime>2025-09-09 13:04:05 UTC</createdTime>
+<generatorID>8DCF9DE0-FA69-B176-CCBA-208121E692D7</generatorID>
+<ownerDesignName>trocEncheres</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="1B86756A-D6F0-D7E5-DBF8-794908008C4E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="9236044E-5632-2E8C-2F6E-C8CB8F83D2A5" name="UTILISATEURS_ROLE_FK">
+<createdBy>symio</createdBy>
+<createdTime>2025-09-09 13:04:05 UTC</createdTime>
+<generatorID>EBA06C38-C7BB-7405-59A7-622704912C6A</generatorID>
+<ownerDesignName>trocEncheres</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="93062D36-C283-8090-2ACB-684D6FC5FC9C"/>
+<colUsage columnID="822C7467-AF82-469B-3D72-D3E74D3D5744"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,86 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="C3F5B1D6-A083-7A02-9864-E73B6317677B" name="ADRESSE">
+<createdBy>symio</createdBy>
+<createdTime>2025-09-09 13:04:05 UTC</createdTime>
+<generatorID>C76947AB-25D9-E86B-0FA0-6529EC9F1470</generatorID>
+<ownerDesignName>trocEncheres</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="no_adresse" id="8B559887-8D48-F295-4F21-278E8A763B29">
+<createdBy>symio</createdBy>
+<createdTime>2025-09-09 13:04:05 UTC</createdTime>
+<generatorID>6FBEE6FD-7282-D7A6-9EE2-1A68AA9CAA3D</generatorID>
+<ownerDesignName>trocEncheres</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="rue" id="2E381D10-6443-C8DA-2370-A383C6E808A6">
+<createdBy>symio</createdBy>
+<createdTime>2025-09-09 13:04:05 UTC</createdTime>
+<generatorID>7E83E3A9-F399-16F9-FB9A-0C5442F42E30</generatorID>
+<ownerDesignName>trocEncheres</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="code_postal" id="0C2944E2-FD8B-8366-291B-5E8C2F80CEC9">
+<createdBy>symio</createdBy>
+<createdTime>2025-09-09 13:04:05 UTC</createdTime>
+<generatorID>C14E70DC-A761-C225-0635-967485608FE1</generatorID>
+<ownerDesignName>trocEncheres</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ville" id="54EAC33D-ADFC-4034-1FD6-211A19F00855">
+<createdBy>symio</createdBy>
+<createdTime>2025-09-09 13:04:05 UTC</createdTime>
+<generatorID>F3F786F0-8A42-DD46-3A3C-BC906DBCF1DC</generatorID>
+<ownerDesignName>trocEncheres</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="adresse_eni" id="3415EE18-EC31-9FD6-4600-6DAEEE22F68F">
+<createdBy>symio</createdBy>
+<createdTime>2025-09-09 13:04:05 UTC</createdTime>
+<commentInRDBMS><![CDATA[DEFAULT 0]]></commentInRDBMS>
+<generatorID>5437EFD2-8543-7590-3076-C0D838ABAAD3</generatorID>
+<ownerDesignName>trocEncheres</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1 BYTE</dataTypeSize>
+<ownDataTypeParameters>1 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="3459C4A8-B6F2-5D6A-B9D6-029A523C0384" name="ADRESSE_PK">
+<createdBy>symio</createdBy>
+<createdTime>2025-09-09 13:04:05 UTC</createdTime>
+<generatorID>0CF24FF5-8344-ACDA-DDBC-CA98F0768F45</generatorID>
+<ownerDesignName>trocEncheres</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8B559887-8D48-F295-4F21-278E8A763B29"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

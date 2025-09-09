@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<ProcessModel class="oracle.dbtools.crest.model.design.process.ProcessModel" name="Process Model" id="EA6525CA-08FC-9E10-987F-259901415271">
+<createdBy>symio</createdBy>
+<createdTime>2025-09-09 11:30:14 UTC</createdTime>
+<ownerDesignName>trocEncheres</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+</ProcessModel>
