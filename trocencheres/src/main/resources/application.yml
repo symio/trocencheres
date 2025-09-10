@@ -10,6 +10,10 @@ spring:
     url: jdbc:sqlserver://localhost;databasename=BD_TROCENCHERES;integratedSecurity=false;encrypt=true;trustServerCertificate=true
 #Options to DB
   jpa:
+    properties:
+      hibernate:
+        open-in-view: true
+        enable_lazy_load_no_trans: true
     show-sql: true
     hibernate:
 #      ddl-auto: create

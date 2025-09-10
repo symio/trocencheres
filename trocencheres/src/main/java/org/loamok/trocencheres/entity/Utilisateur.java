@@ -1,5 +1,6 @@
 package org.loamok.trocencheres.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -42,7 +43,8 @@ public class Utilisateur implements UserDetails {
     @Id
     @Column(name = "pseudo", length = 30)
     private String pseudo;
-    @Column(name = "mot_de_passe", nullable = false, length = 68)
+    @JsonIgnore
+    @Column(name = "mot_de_passe", nullable = false, length = 69)
     private String password;
     @Column(name = "nom", nullable = false, length = 40)
     private String nom;
@@ -58,9 +60,10 @@ public class Utilisateur implements UserDetails {
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     @JoinColumn(name = "no_adresse")
     private Adresse adresse;
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
     @JoinColumn(name = "id_role")
     private Role role;
+    
     private String authority;
     private Boolean isAdmin;
     
