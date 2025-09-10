@@ -1,6 +1,6 @@
 package org.loamok.trocencheres.security.oauth2;
 
-import fr.eni.cave.security.oauth2.OAuth2TokenResponse;
+import org.loamok.trocencheres.security.oauth2.OAuth2TokenResponse;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 
 /**
  *
- * @author symio
+ * @author Huby Franck
  */
 @Service
 @AllArgsConstructor

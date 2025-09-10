@@ -31,11 +31,10 @@ public class SecurityConfig {
     public SecurityFilterChain oauth2ApiFilterChain(HttpSecurity http) throws Exception {
         http
             .securityMatcher("/**")
-//                .authorizeHttpRequests(auth -> auth
-//                    .anyRequest().permitAll()
-//                )
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/authorize/token").permitAll()
+                // APIs ouvertes au public sans authentification
+                .requestMatchers(HttpMethod.POST, "/profil/register").permitAll()
+                .requestMatchers(HttpMethod.POST, "/authorize/token").permitAll()
                 // APIs OAuth2 protégées par scopes
                 // adresses
                 .requestMatchers(HttpMethod.GET, "/adresses").hasAuthority("SCOPE_read")

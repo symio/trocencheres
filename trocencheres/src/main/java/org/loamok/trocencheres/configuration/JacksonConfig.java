@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Primary;
 
 /**
  *
- * @author symio
+ * @author Huby Franck
  */
 @Configuration
 public class JacksonConfig {

@@ -1,4 +1,4 @@
-package fr.eni.cave.security.oauth2;
+package org.loamok.trocencheres.security.oauth2;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 
 /**
  *
- * @author symio
+ * @author Huby Franck
  */
 @Data
 @AllArgsConstructor

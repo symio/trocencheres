@@ -1,7 +1,7 @@
 package org.loamok.trocencheres.repository;
 
-import java.util.List;
-import org.loamok.trocencheres.entity.Adresse;
+import org.loamok.trocencheres.entity.Role;
+import org.loamok.trocencheres.entity.Utilisateur;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -10,7 +10,7 @@ import org.springframework.data.repository.query.Param;
  *
  * @author Huby Franck
  */
-public interface AdresseRepository extends JpaRepository<Adresse, Integer> {
+public interface RoleRepository extends JpaRepository<Role, Integer> {
     @Query
-    List<Adresse> findByVille(@Param("ville") String ville);
+    Role findByRole(@Param("role") String role);
 }

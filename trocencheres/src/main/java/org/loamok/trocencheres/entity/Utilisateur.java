@@ -1,6 +1,7 @@
 package org.loamok.trocencheres.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -34,7 +35,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = {"pseudo"})
-@ToString(of = {"pseudo", "nom", "prenom"})
+@ToString(of = {"pseudo", "nom", "prenom", "email"})
 @Inheritance(strategy = InheritanceType.JOINED)
 @SuperBuilder
 @Entity
@@ -43,9 +44,6 @@ public class Utilisateur implements UserDetails {
     @Id
     @Column(name = "pseudo", length = 30)
     private String pseudo;
-    @JsonIgnore
-    @Column(name = "mot_de_passe", nullable = false, length = 69)
-    private String password;
     @Column(name = "nom", nullable = false, length = 40)
     private String nom;
     @Column(name = "prenom", nullable = false, length = 50)
@@ -60,6 +58,10 @@ public class Utilisateur implements UserDetails {
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     @JoinColumn(name = "no_adresse")
     private Adresse adresse;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @Column(name = "mot_de_passe", nullable = false, length = 69)
+    private String password;
+    @JsonIgnore
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
     @JoinColumn(name = "id_role")
     private Role role;

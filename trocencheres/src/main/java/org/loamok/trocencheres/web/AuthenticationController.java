@@ -1,6 +1,6 @@
 package org.loamok.trocencheres.web;
 
-import fr.eni.cave.security.oauth2.OAuth2TokenResponse;
+import org.loamok.trocencheres.security.oauth2.OAuth2TokenResponse;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  *
- * @author symio
+ * @author Huby Franck
  */
 @RestController
 @RequestMapping("/authorize")

@@ -1,6 +1,5 @@
 package org.loamok.trocencheres.security.jwt;
 
-
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -22,7 +21,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 /**
  *
- * @author symio
+ * @author Huby Franck
  */
 @Component
 @AllArgsConstructor
