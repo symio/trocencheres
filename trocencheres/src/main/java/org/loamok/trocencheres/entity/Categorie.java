@@ -28,4 +28,6 @@ public class Categorie {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "no_categorie")
     private Integer id;
+    @Column(name = "libelle", nullable = false, length = 30, unique = true)
+    private String libelle;
 }

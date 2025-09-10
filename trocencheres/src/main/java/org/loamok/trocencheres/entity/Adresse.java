@@ -35,6 +35,6 @@ public class Adresse {
     @Column(name = "city", nullable = false, length = 50)
     private String ville;
     @Column(name = "adresse_eni", nullable = false)
-    private Boolean adresseEni;
+    private @Builder.Default Boolean adresseEni = false;
     
 }
