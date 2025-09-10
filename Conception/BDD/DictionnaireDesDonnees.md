@@ -1,5 +1,27 @@
 # Dictionnaire des Données - ENCHERES_DB
 
+## Liste des entités - ENCHERES_DB
+
+1. **ADRESSES**  
+   Stocke les informations d’adresses postales (utilisateurs, lieux de retrait).  
+
+2. **CATEGORIES**  
+   Référence les catégories d’articles (ex : Informatique, Meubles, etc.).  
+
+3. **UTILISATEURS**  
+   Contient les informations des utilisateurs inscrits (identité, email, mot de passe, rôle administrateur éventuel).  
+
+4. **ARTICLES_A_VENDRE**  
+   Regroupe les articles mis en vente avec leurs détails, leur vendeur, leur catégorie et leur adresse de retrait.  
+
+5. **ENCHERES**  
+   Trace les enchères réalisées sur les articles avec un identifiant unique, le montant et la date.  
+
+6. **ROLES**  
+   Définit les rôles disponibles dans l’application (user, admin), associés à un identifiant unique.  
+
+---
+
 ## 1. Entité ADRESSES
 
 | Champ        | Type      | Taille | Contraintes                  | Description                          |

@@ -55,7 +55,7 @@
 <ownDataTypeParameters>50,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="adresse_eni" id="3415EE18-EC31-9FD6-4600-6DAEEE22F68F">
+<Column name="adress_eni" id="3415EE18-EC31-9FD6-4600-6DAEEE22F68F">
 <createdBy>symio</createdBy>
 <createdTime>2025-09-09 13:04:05 UTC</createdTime>
 <commentInRDBMS><![CDATA[DEFAULT 0]]></commentInRDBMS>

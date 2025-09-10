@@ -1,0 +1,113 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="9223EFD4-5243-4105-A68F-F42419BF446F" name="ENCHERE">
+<createdBy>symio</createdBy>
+<createdTime>2025-09-09 12:26:34 UTC</createdTime>
+<ownerDesignName>trocEncheres2</ownerDesignName>
+<engineerTo>
+<item key="01184AB1-7B47-28B2-426A-4CEC6831DDE1" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_enchere" id="0CECCDE8-C7F3-068C-F897-2518929E55D1">
+<createdBy>symio</createdBy>
+<createdTime>2025-09-09 12:32:29 UTC</createdTime>
+<ownerDesignName>trocEncheres2</ownerDesignName>
+<engineerTo>
+<item key="01184AB1-7B47-28B2-426A-4CEC6831DDE1" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="no_article" id="5D53A50E-9FE3-82E2-E2DC-4F4B59397E65">
+<createdBy>symio</createdBy>
+<createdTime>2025-09-09 12:33:16 UTC</createdTime>
+<generatorID>45A7A7B9-DB89-0201-4082-2E47E03E09D9</generatorID>
+<ownerDesignName>trocEncheres2</ownerDesignName>
+<engineerTo>
+<item key="01184AB1-7B47-28B2-426A-4CEC6831DDE1" value="true"/>
+</engineerTo>
+<referedAttribute>B5247785-B89A-B0CF-7D8B-D51A1FE666D3</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="pseudo" id="47F06D53-F48D-0251-F79E-DDFD9E76F4C9">
+<createdBy>symio</createdBy>
+<createdTime>2025-09-09 12:33:53 UTC</createdTime>
+<generatorID>233471DE-CC24-279B-C22D-4FE9C6ADA54A</generatorID>
+<ownerDesignName>trocEncheres2</ownerDesignName>
+<engineerTo>
+<item key="01184AB1-7B47-28B2-426A-4CEC6831DDE1" value="true"/>
+</engineerTo>
+<referedAttribute>DB54AC3F-2C5B-6D63-4923-75B2F0B197E3</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="montant_enchere" id="46DD210F-674B-A348-BC1B-F72C8F504983">
+<createdBy>symio</createdBy>
+<createdTime>2025-09-09 12:55:52 UTC</createdTime>
+<ownerDesignName>trocEncheres2</ownerDesignName>
+<engineerTo>
+<item key="01184AB1-7B47-28B2-426A-4CEC6831DDE1" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="date_enchere" id="269FC667-9DC9-464C-9792-99D4B44E6FCC">
+<createdBy>symio</createdBy>
+<createdTime>2025-09-09 12:56:56 UTC</createdTime>
+<ownerDesignName>trocEncheres2</ownerDesignName>
+<engineerTo>
+<item key="01184AB1-7B47-28B2-426A-4CEC6831DDE1" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="A1763ADB-2AF3-AD71-627E-316EDA64AA82" name="ENCHERE PK">
+<createdBy>symio</createdBy>
+<createdTime>2025-09-09 12:32:44 UTC</createdTime>
+<ownerDesignName>trocEncheres2</ownerDesignName>
+<engineerTo>
+<item key="01184AB1-7B47-28B2-426A-4CEC6831DDE1" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>0CECCDE8-C7F3-068C-F897-2518929E55D1</attributeRef>
+</usedAttributes>
+</identifier>
+<identifier id="47D4FC1D-2AA0-668B-8F34-B8A5EC9C5499" name="uc_article_utilisateur_montant_enchere">
+<createdBy>symio</createdBy>
+<createdTime>2025-09-09 13:00:40 UTC</createdTime>
+<comment><![CDATA[Remplace la PK originel posant problème en api rest]]></comment>
+<ownerDesignName>trocEncheres2</ownerDesignName>
+<engineerTo>
+<item key="01184AB1-7B47-28B2-426A-4CEC6831DDE1" value="true"/>
+</engineerTo>
+<newElementsIDs>5D53A50E-9FE3-82E2-E2DC-4F4B59397E65,47F06D53-F48D-0251-F79E-DDFD9E76F4C9,46DD210F-674B-A348-BC1B-F72C8F504983</newElementsIDs>
+<usedAttributes>
+<attributeRef>5D53A50E-9FE3-82E2-E2DC-4F4B59397E65</attributeRef>
+<attributeRef>47F06D53-F48D-0251-F79E-DDFD9E76F4C9</attributeRef>
+<attributeRef>46DD210F-674B-A348-BC1B-F72C8F504983</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>
