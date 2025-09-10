@@ -1,16 +1,16 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="69C67A6B-AE86-B3BC-9EC7-8E1FC20698E2" name="ARTICLES_A_VENDRE">
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="5C17F79B-5C52-4CBB-2163-EA8193EBC31B" name="ARTICLES_A_VENDRE">
 <createdBy>symio</createdBy>
-<createdTime>2025-09-09 13:04:05 UTC</createdTime>
+<createdTime>2025-09-10 06:59:05 UTC</createdTime>
 <generatorID>0E7EBD2C-9970-D54B-3DF2-E2CF0E536CC3</generatorID>
 <ownerDesignName>trocEncheres</ownerDesignName>
 <allowColumnReorder>false</allowColumnReorder>
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
 <columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
-<Column name="no_article" id="19EE3BE1-3427-10B7-0437-5C49C613D2E4">
+<Column name="no_article" id="0A6B1B82-7446-F2BC-647A-6A017DAC9DB2">
 <createdBy>symio</createdBy>
-<createdTime>2025-09-09 13:04:05 UTC</createdTime>
+<createdTime>2025-09-10 06:59:05 UTC</createdTime>
 <generatorID>628AA570-96B1-6358-2C46-24117699C2F6</generatorID>
 <ownerDesignName>trocEncheres</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
@@ -19,9 +19,9 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="UTILISATEURS_pseudo" id="F87CBAEB-4716-4022-CAA6-42EB9BBC6634">
+<Column name="UTILISATEURS_pseudo" id="A054018A-E4D2-95AB-BDD4-4A82D58732AB">
 <createdBy>symio</createdBy>
-<createdTime>2025-09-09 13:04:05 UTC</createdTime>
+<createdTime>2025-09-10 06:59:05 UTC</createdTime>
 <generatorID>08D09023-26CE-CD21-D474-EA9EEA95C2DD</generatorID>
 <ownerDesignName>trocEncheres</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
@@ -32,12 +32,12 @@
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
-<colAssociation fkAssociation="A3532BE7-AF0A-5633-AEB8-774585E7D6C5" referredColumn="0B32A3BE-8B25-8E8F-DE2A-A81F5C62EE94"/>
+<colAssociation fkAssociation="D82C0656-CE86-1393-6AD0-B81BFBB3BD72" referredColumn="5F7C1364-8F77-E74D-37BD-503B8F8B1EA4"/>
 </associations>
 </Column>
-<Column name="CATEGORIE_no_categorie" id="998E567A-B3E4-4789-82A0-FADD44311D35">
+<Column name="CATEGORIE_no_categorie" id="A2A3C366-CA05-9496-0C82-72FC8F6D6274">
 <createdBy>symio</createdBy>
-<createdTime>2025-09-09 13:04:05 UTC</createdTime>
+<createdTime>2025-09-10 06:59:05 UTC</createdTime>
 <generatorID>F0C82DA0-B46C-8309-2910-7D4D0C23C12A</generatorID>
 <ownerDesignName>trocEncheres</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
@@ -47,12 +47,12 @@
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
-<colAssociation fkAssociation="E425EF42-AB3C-9BC9-9783-63B41AA82555" referredColumn="B915A0FD-0F9B-5FD9-9490-09AFC99EE847"/>
+<colAssociation fkAssociation="DD38605C-90A9-2A2F-5061-DBD6CD3B41A9" referredColumn="2A134C38-DF86-00DC-9EA4-F97A476641D9"/>
 </associations>
 </Column>
-<Column name="ADRESSE_no_adresse" id="EF4780D2-15B4-FD21-A425-3EDDE696BD26">
+<Column name="ADRESSE_no_adresse" id="D5EFBDA3-9F22-3F32-CD19-7A3B7B57E1D6">
 <createdBy>symio</createdBy>
-<createdTime>2025-09-09 13:04:05 UTC</createdTime>
+<createdTime>2025-09-10 06:59:05 UTC</createdTime>
 <generatorID>0D532BCC-E494-9B9C-3E3E-F1CAA26CA08F</generatorID>
 <ownerDesignName>trocEncheres</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
@@ -62,12 +62,12 @@
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
-<colAssociation fkAssociation="225FC800-EF22-CB15-9565-A4E18A31B2F7" referredColumn="8B559887-8D48-F295-4F21-278E8A763B29"/>
+<colAssociation fkAssociation="FB6BE7F4-B0FE-A6F7-4CB9-A88875771A5B" referredColumn="DE4B28C8-0842-A0B5-3DCE-B2E5FE06CF2C"/>
 </associations>
 </Column>
-<Column name="nom_article" id="FD5FA6FE-2C27-1B5E-DBF6-9257731D76E1">
+<Column name="nom_article" id="78757EC4-06A2-02E6-D887-92A423EF2DAA">
 <createdBy>symio</createdBy>
-<createdTime>2025-09-09 13:04:05 UTC</createdTime>
+<createdTime>2025-09-10 06:59:05 UTC</createdTime>
 <generatorID>C7D686A2-BB95-16B8-CBB2-31DD073C8DED</generatorID>
 <ownerDesignName>trocEncheres</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
@@ -77,9 +77,9 @@
 <ownDataTypeParameters>30,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="description" id="E18CA7FE-FE8C-4B3A-6280-BC7C1125C300">
+<Column name="description" id="C3DC328C-F779-A922-47CE-D640FE9F0DA0">
 <createdBy>symio</createdBy>
-<createdTime>2025-09-09 13:04:05 UTC</createdTime>
+<createdTime>2025-09-10 06:59:05 UTC</createdTime>
 <generatorID>158F94ED-4EF7-A7F0-AF1E-C656D6391AC4</generatorID>
 <ownerDesignName>trocEncheres</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
@@ -89,9 +89,9 @@
 <ownDataTypeParameters>300,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="photo" id="E9658EE7-C0FB-1151-20E2-133246CAF48C">
+<Column name="photo" id="63A3C196-C892-7A54-B980-DC8273AA44DC">
 <createdBy>symio</createdBy>
-<createdTime>2025-09-09 13:04:05 UTC</createdTime>
+<createdTime>2025-09-10 06:59:05 UTC</createdTime>
 <generatorID>D382187F-FC03-377C-B876-3F2E23888A0F</generatorID>
 <ownerDesignName>trocEncheres</ownerDesignName>
 <nullsAllowed>true</nullsAllowed>
@@ -101,9 +101,9 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="date_debut_encheres" id="B2CE09EB-1D27-ADAD-9736-682DE9BE31A7">
+<Column name="date_debut_encheres" id="B2207002-C8DC-0F4D-C3F5-5455D9AEB489">
 <createdBy>symio</createdBy>
-<createdTime>2025-09-09 13:04:05 UTC</createdTime>
+<createdTime>2025-09-10 06:59:05 UTC</createdTime>
 <generatorID>2878CEB7-22D1-B236-2FFA-89836A9D7351</generatorID>
 <ownerDesignName>trocEncheres</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
@@ -112,9 +112,9 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="date_fin_encheres" id="AC4FABF3-A314-E0C2-CC7D-816893A443D0">
+<Column name="date_fin_encheres" id="6380C351-E7B9-DAA2-28C9-1D0135EBCDEA">
 <createdBy>symio</createdBy>
-<createdTime>2025-09-09 13:04:05 UTC</createdTime>
+<createdTime>2025-09-10 06:59:05 UTC</createdTime>
 <generatorID>6F0CA9D1-7DD4-C31A-2FCF-4E95C2546F73</generatorID>
 <ownerDesignName>trocEncheres</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
@@ -123,9 +123,9 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="statut_enchere" id="BA92C2F6-6A5E-C69B-AE2A-1854905F3ACA">
+<Column name="statut_enchere" id="FD3A8D78-BFAB-899C-3E06-26410D630FE5">
 <createdBy>symio</createdBy>
-<createdTime>2025-09-09 13:04:05 UTC</createdTime>
+<createdTime>2025-09-10 06:59:05 UTC</createdTime>
 <commentInRDBMS><![CDATA[DEFAULT 0
 Statut (0=pas commencée,1=active,2=clôturée,3=livrée,100=annulée)]]></commentInRDBMS>
 <generatorID>3D3285C7-83A6-7EFE-4F12-1541F739582E</generatorID>
@@ -136,9 +136,9 @@ Statut (0=pas commencée,1=active,2=clôturée,3=livrée,100=annulée)]]></comme
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="prinx_initial" id="ADDECF46-31FF-3EFC-E6F1-A0E661B93527">
+<Column name="prinx_initial" id="93204293-8B38-A44B-7955-F60E7183504D">
 <createdBy>symio</createdBy>
-<createdTime>2025-09-09 13:04:05 UTC</createdTime>
+<createdTime>2025-09-10 06:59:05 UTC</createdTime>
 <generatorID>CB6BD99A-9EBF-3973-6A0B-B89B95AA737F</generatorID>
 <ownerDesignName>trocEncheres</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
@@ -147,9 +147,9 @@ Statut (0=pas commencée,1=active,2=clôturée,3=livrée,100=annulée)]]></comme
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="prix_vente" id="DA393647-C8C9-AA07-3B69-F4622C3140B1">
+<Column name="prix_vente" id="4D83388C-033C-23E4-F3D6-AE00FCEB2742">
 <createdBy>symio</createdBy>
-<createdTime>2025-09-09 13:04:05 UTC</createdTime>
+<createdTime>2025-09-10 06:59:05 UTC</createdTime>
 <commentInRDBMS><![CDATA[Prix final (si vendu)]]></commentInRDBMS>
 <generatorID>5568A3E1-F74B-B090-7C1C-B639A78B0F67</generatorID>
 <ownerDesignName>trocEncheres</ownerDesignName>
@@ -162,49 +162,49 @@ Statut (0=pas commencée,1=active,2=clôturée,3=livrée,100=annulée)]]></comme
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
-<ind_PK_UK id="FCC91200-0F39-8BAC-4080-CC4A478ADCD8" name="ARTICLES_A_VENDRE_PK">
+<ind_PK_UK id="E559B484-8723-0B11-9C64-FF28170C6BF7" name="ARTICLES_A_VENDRE_PK">
 <createdBy>symio</createdBy>
-<createdTime>2025-09-09 13:04:05 UTC</createdTime>
+<createdTime>2025-09-10 06:59:05 UTC</createdTime>
 <generatorID>F419EB2E-5AF3-1EBB-EA81-EB977675A314</generatorID>
 <ownerDesignName>trocEncheres</ownerDesignName>
 <pk>true</pk>
 <indexState>Primary Constraint</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="19EE3BE1-3427-10B7-0437-5C49C613D2E4"/>
+<colUsage columnID="0A6B1B82-7446-F2BC-647A-6A017DAC9DB2"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="9D3126D0-6DB0-C5AB-BA2C-BC99318B5968" name="ARTICLES_A_VENDRE_UTILISATEURS_FK">
+<ind_PK_UK id="2D9755D7-359B-656E-07A1-3C9EB1596543" name="ARTICLES_A_VENDRE_UTILISATEURS_FK">
 <createdBy>symio</createdBy>
-<createdTime>2025-09-09 13:04:05 UTC</createdTime>
+<createdTime>2025-09-10 06:59:05 UTC</createdTime>
 <generatorID>5E4CA237-7C66-087C-FF14-E356F51987A0</generatorID>
 <ownerDesignName>trocEncheres</ownerDesignName>
 <indexState>Foreign Key</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="F87CBAEB-4716-4022-CAA6-42EB9BBC6634"/>
+<colUsage columnID="A054018A-E4D2-95AB-BDD4-4A82D58732AB"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="B8690631-75C4-0FDB-DC1F-EC39CD27709F" name="ARTICLES_A_VENDRE_CATEGORIE_FK">
+<ind_PK_UK id="5758CDFE-8297-3058-D01B-BEC93A5BBA3B" name="ARTICLES_A_VENDRE_CATEGORIE_FK">
 <createdBy>symio</createdBy>
-<createdTime>2025-09-09 13:04:05 UTC</createdTime>
+<createdTime>2025-09-10 06:59:05 UTC</createdTime>
 <generatorID>8949DE1B-1FBF-EAB1-5708-1A18F6FA13FA</generatorID>
 <ownerDesignName>trocEncheres</ownerDesignName>
 <indexState>Foreign Key</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="998E567A-B3E4-4789-82A0-FADD44311D35"/>
+<colUsage columnID="A2A3C366-CA05-9496-0C82-72FC8F6D6274"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="73A53893-9793-E2E0-0DC8-169857953CDA" name="ARTICLES_A_VENDRE_ADRESSE_FK">
+<ind_PK_UK id="6F531826-5365-2BA4-02F5-6279685DDC43" name="ARTICLES_A_VENDRE_ADRESSE_FK">
 <createdBy>symio</createdBy>
-<createdTime>2025-09-09 13:04:05 UTC</createdTime>
+<createdTime>2025-09-10 06:59:05 UTC</createdTime>
 <generatorID>40D7B9E0-D7BC-A87A-81AB-E7892C372662</generatorID>
 <ownerDesignName>trocEncheres</ownerDesignName>
 <indexState>Foreign Key</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="EF4780D2-15B4-FD21-A425-3EDDE696BD26"/>
+<colUsage columnID="D5EFBDA3-9F22-3F32-CD19-7A3B7B57E1D6"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

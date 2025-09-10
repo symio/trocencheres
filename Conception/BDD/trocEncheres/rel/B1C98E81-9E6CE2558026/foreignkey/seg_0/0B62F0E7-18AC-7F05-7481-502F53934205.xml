@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="0B62F0E7-18AC-7F05-7481-502F53934205" containerWithKeyObject="1582A089-72EA-A372-B683-D602590CBCE6" localFKIndex="14FB0FD1-198E-0F1A-BD57-54CC9EB198FD" name="UTILISATEURS_ROLE_FK">
+<createdBy>symio</createdBy>
+<createdTime>2025-09-10 06:59:05 UTC</createdTime>
+<generatorID>EBA06C38-C7BB-7405-59A7-622704912C6A</generatorID>
+<ownerDesignName>trocEncheres</ownerDesignName>
+<referredTableLongName>ROLE</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>81876DD0-CB74-E8E6-0C7B-0210AD653F3E</referredTableID>
+<keyObject>06AE847C-B308-92F5-0F38-9FB341F23D77</keyObject>
+<referredKeyID>06AE847C-B308-92F5-0F38-9FB341F23D77</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id_role</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

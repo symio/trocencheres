@@ -129,36 +129,18 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="role" id="995E1779-A4CC-AD83-C824-D39145936801">
+<Attribute name="id_role" id="FD49896C-2EA1-37E9-1DA5-7DBE5F0FE12B">
 <createdBy>symio</createdBy>
-<createdTime>2025-09-09 13:03:10 UTC</createdTime>
+<createdTime>2025-09-10 06:58:36 UTC</createdTime>
 <generatorID>EBA06C38-C7BB-7405-59A7-622704912C6A</generatorID>
 <ownerDesignName>trocEncheres</ownerDesignName>
-<importedID>9BAA221B-821D-C282-4113-792CCB80B490</importedID>
 <engineerTo>
 <item key="B1C98E81-8B7A-85DA-4D37-9E6CE2558026" value="true"/>
 </engineerTo>
-<referedAttribute>DA64299A-73B9-501C-AEF6-ABD8B6042D7B</referedAttribute>
+<referedAttribute>59A36223-71AC-3232-5A58-FAB1CCAFBDDB</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
-<dataTypeSize>50</dataTypeSize>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="is_admin" id="558527BB-9452-C44C-08B4-A0BCA3CDFD5C">
-<createdBy>symio</createdBy>
-<createdTime>2025-09-09 13:03:10 UTC</createdTime>
-<generatorID>EBA06C38-C7BB-7405-59A7-622704912C6A</generatorID>
-<ownerDesignName>trocEncheres</ownerDesignName>
-<importedID>88ABC960-301B-C0F8-5215-5C15E6758DC4</importedID>
-<engineerTo>
-<item key="B1C98E81-8B7A-85DA-4D37-9E6CE2558026" value="true"/>
-</engineerTo>
-<referedAttribute>922C6B5F-9434-8B40-14E4-8A38C3422472</referedAttribute>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT006</logicalDatatype>
-<dataTypeSize>1 BYTE</dataTypeSize>
+<logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>

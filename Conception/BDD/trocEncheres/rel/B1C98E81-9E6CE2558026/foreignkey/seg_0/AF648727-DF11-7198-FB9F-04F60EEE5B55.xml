@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="AF648727-DF11-7198-FB9F-04F60EEE5B55" containerWithKeyObject="1582A089-72EA-A372-B683-D602590CBCE6" localFKIndex="DC2EA43F-4B98-0319-95AB-B8688A04ADF7" name="UTILISATEURS_ADRESSE_FK">
+<createdBy>symio</createdBy>
+<createdTime>2025-09-10 06:59:05 UTC</createdTime>
+<generatorID>8DCF9DE0-FA69-B176-CCBA-208121E692D7</generatorID>
+<ownerDesignName>trocEncheres</ownerDesignName>
+<referredTableLongName>ADRESSE</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>AB9A838C-8C51-F1C1-327D-964B5A795BCC</referredTableID>
+<keyObject>12826055-8890-6F35-3309-AA1A8C492004</keyObject>
+<referredKeyID>12826055-8890-6F35-3309-AA1A8C492004</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>no_adresse</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

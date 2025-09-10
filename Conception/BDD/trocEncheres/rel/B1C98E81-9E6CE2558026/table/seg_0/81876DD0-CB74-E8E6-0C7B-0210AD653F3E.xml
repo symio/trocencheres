@@ -1,16 +1,16 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="E1FC3274-AD08-970D-D1C7-1A8699131675" name="ROLE">
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="81876DD0-CB74-E8E6-0C7B-0210AD653F3E" name="ROLE">
 <createdBy>symio</createdBy>
-<createdTime>2025-09-09 13:04:05 UTC</createdTime>
+<createdTime>2025-09-10 06:59:05 UTC</createdTime>
 <generatorID>BBA95C9A-B80B-D6B2-55A0-A3572F2A2BCD</generatorID>
 <ownerDesignName>trocEncheres</ownerDesignName>
 <allowColumnReorder>false</allowColumnReorder>
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
 <columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
-<Column name="id_role" id="37048680-623D-C293-671A-2D2FCCFA1D99">
+<Column name="id_role" id="ABD6D2E6-CDF7-56F0-A4CD-3D07C78C9553">
 <createdBy>symio</createdBy>
-<createdTime>2025-09-09 13:04:05 UTC</createdTime>
+<createdTime>2025-09-10 06:59:05 UTC</createdTime>
 <generatorID>59A36223-71AC-3232-5A58-FAB1CCAFBDDB</generatorID>
 <ownerDesignName>trocEncheres</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
@@ -19,9 +19,9 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="role" id="F2D79A38-4EEA-94C6-45B6-1E99C9158CFD">
+<Column name="role" id="147A4B1F-D433-8BC3-1B0D-7C01A0623D12">
 <createdBy>symio</createdBy>
-<createdTime>2025-09-09 13:04:05 UTC</createdTime>
+<createdTime>2025-09-10 06:59:05 UTC</createdTime>
 <generatorID>DA64299A-73B9-501C-AEF6-ABD8B6042D7B</generatorID>
 <ownerDesignName>trocEncheres</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
@@ -31,9 +31,9 @@
 <ownDataTypeParameters>50,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="is_admin" id="FFCBADA2-D14A-176D-80D0-45FE0D71EFCD">
+<Column name="is_admin" id="72F3CC9F-3B24-8094-8230-99B4129DE614">
 <createdBy>symio</createdBy>
-<createdTime>2025-09-09 13:04:05 UTC</createdTime>
+<createdTime>2025-09-10 06:59:05 UTC</createdTime>
 <commentInRDBMS><![CDATA[DEFAULT 0]]></commentInRDBMS>
 <generatorID>922C6B5F-9434-8B40-14E4-8A38C3422472</generatorID>
 <ownerDesignName>trocEncheres</ownerDesignName>
@@ -46,28 +46,28 @@
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
-<ind_PK_UK id="E1E5627F-F71B-AD1E-9152-466207933F9D" name="ROLE_PK">
+<ind_PK_UK id="06AE847C-B308-92F5-0F38-9FB341F23D77" name="ROLE_PK">
 <createdBy>symio</createdBy>
-<createdTime>2025-09-09 13:04:05 UTC</createdTime>
+<createdTime>2025-09-10 06:59:05 UTC</createdTime>
 <generatorID>3BFC6E65-59A3-DE84-A8FB-EBE7EAEA2BB5</generatorID>
 <ownerDesignName>trocEncheres</ownerDesignName>
 <pk>true</pk>
 <indexState>Primary Constraint</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="37048680-623D-C293-671A-2D2FCCFA1D99"/>
+<colUsage columnID="ABD6D2E6-CDF7-56F0-A4CD-3D07C78C9553"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="0D3723E2-74ED-5622-C894-3AAA0FB2C790" name="ROLE_role_is_admin_UN">
+<ind_PK_UK id="5156DDF3-0B31-4265-EBF4-49216EF02F38" name="ROLE_role_is_admin_UN">
 <createdBy>symio</createdBy>
-<createdTime>2025-09-09 13:04:05 UTC</createdTime>
+<createdTime>2025-09-10 06:59:05 UTC</createdTime>
 <generatorID>816198E5-9C4E-300E-59B3-134A5FF04AA6</generatorID>
 <ownerDesignName>trocEncheres</ownerDesignName>
 <indexState>Unique Constraint</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="F2D79A38-4EEA-94C6-45B6-1E99C9158CFD"/>
-<colUsage columnID="FFCBADA2-D14A-176D-80D0-45FE0D71EFCD"/>
+<colUsage columnID="147A4B1F-D433-8BC3-1B0D-7C01A0623D12"/>
+<colUsage columnID="72F3CC9F-3B24-8094-8230-99B4129DE614"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

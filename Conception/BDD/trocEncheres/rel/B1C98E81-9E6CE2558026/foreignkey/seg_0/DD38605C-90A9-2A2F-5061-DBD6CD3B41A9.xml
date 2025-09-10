@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="DD38605C-90A9-2A2F-5061-DBD6CD3B41A9" containerWithKeyObject="5C17F79B-5C52-4CBB-2163-EA8193EBC31B" localFKIndex="5758CDFE-8297-3058-D01B-BEC93A5BBA3B" name="ARTICLES_A_VENDRE_CATEGORIE_FK">
+<createdBy>symio</createdBy>
+<createdTime>2025-09-10 06:59:05 UTC</createdTime>
+<generatorID>8949DE1B-1FBF-EAB1-5708-1A18F6FA13FA</generatorID>
+<ownerDesignName>trocEncheres</ownerDesignName>
+<referredTableLongName>CATEGORIE</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>E79A4451-C581-66DE-E29C-E9DA873AEB05</referredTableID>
+<keyObject>00F28DFB-D99B-8D72-8918-2DEB3EBA72B1</keyObject>
+<referredKeyID>00F28DFB-D99B-8D72-8918-2DEB3EBA72B1</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>no_categorie</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>
