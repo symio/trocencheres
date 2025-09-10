@@ -55,6 +55,7 @@
 | mot_de_passe  | VARCHAR | 68     | NOT NULL                               | Mot de passe chiffré              |
 | credit        | INTEGER | -      | NOT NULL, DEFAULT 10                   | Crédits disponibles               |
 | no_adresse    | INTEGER | -      | NOT NULL, FK → ADRESSES(no_adresse)    | Lien vers l’adresse de l’utilisateur |
+| id_role       | INTEGER | -      | NOT NULL, FK → ROLES(id_role)          | Lien vers le rôle de l’utilisateur |
 
 ---
 
@@ -79,23 +80,23 @@
 
 ## 5. Entité ENCHERES
 
-| Champ           | Type     | Taille | Contraintes                                              | Description                  |
-|-----------------|----------|--------|----------------------------------------------------------|------------------------------|
-| id_enchere      | INTEGER  | -      | PK, IDENTITY, NOT NULL                                   | Identifiant unique de l’enchère |
-| id_utilisateur  | VARCHAR  | 30     | NOT NULL, FK → UTILISATEURS(pseudo)                      | Utilisateur enchérisseur     |
-| no_article      | INTEGER  | -      | NOT NULL, FK → ARTICLES_A_VENDRE(no_article)             | Article concerné             |
-| montant_enchere | INTEGER  | -      | NOT NULL                                                 | Montant de l’enchère         |
-| date_enchere    | DATETIME | -      | NOT NULL                                                 | Date de l’enchère            |
+| Champ           | Type     | Taille | Contraintes                                                                          | Description                     |
+|-----------------|----------|--------|--------------------------------------------------------------------------------------|---------------------------------|
+| id_enchere      | INTEGER  | -      | PK, IDENTITY, NOT NULL                                                               | Identifiant unique de l’enchère |
+| id_utilisateur  | VARCHAR  | 30     | NOT NULL, FK → UTILISATEURS(pseudo), UNIQUE (+ montant_enchere, id_utilisateur)      | Utilisateur enchérisseur        |
+| no_article      | INTEGER  | -      | NOT NULL, FK → ARTICLES_A_VENDRE(no_article), UNIQUE (+ montant_enchere, no_article) | Article concerné                |
+| montant_enchere | INTEGER  | -      | NOT NULL, UNIQUE (+ id_utilisateur, no_article)                                      | Montant de l’enchère            |
+| date_enchere    | DATETIME | -      | NOT NULL                                                                             | Date de l’enchère               |
 
 ---
 
 ## 6. Entité ROLES
 
-| Champ    | Type     | Taille | Contraintes            | Description                 |
-|----------|----------|--------|------------------------|-----------------------------|
-| id_role  | INTEGER  | -      | PK, IDENTITY, NOT NULL | Identifiant unique du rôle  |
-| ROLE     | NVARCHAR | 50     | NOT NULL               | Nom du rôle (ex: USER/ADMIN)|
-| IS_ADMIN | INT      | -      | NOT NULL               | Indique si admin (0/1)      |
+| Champ    | Type     | Taille | Contraintes                  | Description                 |
+|----------|----------|--------|------------------------------|-----------------------------|
+| id_role  | INTEGER  | -      | PK, IDENTITY, NOT NULL       | Identifiant unique du rôle  |
+| ROLE     | NVARCHAR | 50     | NOT NULL, UNIQUE (+IS_ADMIN) | Nom du rôle (ex: USER/ADMIN)|
+| IS_ADMIN | INT      | -      | NOT NULL, UNIQUE (+ROLE)     | Indique si admin (0/1)      |
 
 
 ---
@@ -105,6 +106,7 @@
 | Table source        | Colonne FK          | Table cible      | Colonne PK      | Type de relation       |
 |---------------------|---------------------|------------------|-----------------|------------------------|
 | UTILISATEURS        | no_adresse          | ADRESSES         | no_adresse      | Plusieurs utilisateurs → une adresse |
+| UTILISATEURS        | id_role             | ROLES            | id_role         | Plusieurs utilisateurs → une role    |
 | ARTICLES_A_VENDRE   | id_utilisateur      | UTILISATEURS     | pseudo          | Plusieurs articles → un utilisateur  |
 | ARTICLES_A_VENDRE   | no_categorie        | CATEGORIES       | no_categorie    | Plusieurs articles → une catégorie   |
 | ARTICLES_A_VENDRE   | no_adresse_retrait  | ADRESSES         | no_adresse      | Plusieurs articles → une adresse de retrait |
