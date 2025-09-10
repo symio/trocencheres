@@ -26,6 +26,6 @@ import lombok.NoArgsConstructor;
 public class Categorie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "no_adresse")
+    @Column(name = "no_categorie")
     private Integer id;
 }
