@@ -1,0 +1,69 @@
+<!-- src/app/features/auth/login/login.component.html -->
+<div class="login-container">
+  <div class="login-card">
+    <div class="login-header">
+      <h2>Connexion OAuth2</h2>
+      <p>Connectez-vous avec vos identifiants client</p>
+    </div>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+      <!-- Champ Client ID -->
+      <div class="form-group">
+        <label for="clientId">Client ID</label>
+        <input
+          type="text"
+          id="clientId"
+          formControlName="clientId"
+          class="form-control"
+          [class.is-invalid]="clientId?.invalid && clientId?.touched"
+          placeholder="Entrez votre client ID"
+          autocomplete="username"
+        >
+        <div class="invalid-feedback" *ngIf="clientId?.invalid && clientId?.touched">
+          <div *ngIf="clientId?.errors?.['required']">
+            Le client ID est requis
+          </div>
+        </div>
+      </div>
+
+      <!-- Champ Client Secret -->
+      <div class="form-group">
+        <label for="clientSecret">Client Secret</label>
+        <input
+          type="password"
+          id="clientSecret"
+          formControlName="clientSecret"
+          class="form-control"
+          [class.is-invalid]="clientSecret?.invalid && clientSecret?.touched"
+          placeholder="Entrez votre client secret"
+          autocomplete="current-password"
+        >
+        <div class="invalid-feedback" *ngIf="clientSecret?.invalid && clientSecret?.touched">
+          <div *ngIf="clientSecret?.errors?.['required']">
+            Le client secret est requis
+          </div>
+        </div>
+      </div>
+
+      <!-- Message d'erreur -->
+      <div class="alert alert-danger" *ngIf="error" role="alert">
+        {{ error }}
+      </div>
+
+      <!-- Bouton de connexion -->
+      <button
+        type="submit"
+        class="btn btn-primary btn-block"
+        [disabled]="loginForm.invalid || loading"
+      >
+        <span *ngIf="loading" class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+        {{ loading ? 'Connexion...' : 'Se connecter' }}
+      </button>
+    </form>
+
+    <!-- Lien vers l'inscription -->
+    <div class="login-footer">
+      <p>Pas encore de compte ? <a routerLink="/auth/register">S'inscrire</a></p>
+    </div>
+  </div>
+</div>
