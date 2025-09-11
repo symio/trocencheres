@@ -5,6 +5,7 @@ import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
 import java.util.Optional;
 import java.util.regex.Pattern;
+import org.loamok.trocencheres.entity.Adresse;
 import org.loamok.trocencheres.entity.Role;
 import org.loamok.trocencheres.entity.Utilisateur;
 import org.loamok.trocencheres.repository.RoleRepository;
@@ -30,15 +31,39 @@ public class UserManager implements userService {
     private UtilisateurRepository uR;
     @Autowired
     private RoleRepository rR;
+    @Autowired
+    private AdresseService aS;
     @PersistenceContext
     private EntityManager entityManager;
 
     @Override
-    @Transactional
     public Utilisateur registerUser(Utilisateur u) {
-
-        Role roleUser = rR.findByRole("ROLE_USER");
-        roleUser = entityManager.merge(roleUser);
+        return registerUser(u, Boolean.FALSE);
+    }
+    
+    @Override
+    @Transactional
+    public Utilisateur registerUser(Utilisateur u, Boolean isAdmin) {
+        Role roleUser =null;
+        
+        if(!isAdmin) {
+            roleUser = rR.findByRole("ROLE_USER");
+        } else {
+            if(u.getRole() == null || u.getRole().getRole() == null | u.getRole().getRole().isBlank())
+                throw new RuntimeException("user must have a Role but user.role is null.");
+            roleUser = rR.findByRole(u.getRole().getRole());
+        }
+        
+        Adresse a = null;
+        
+        if(u.getAdresse() == null)
+            throw new RuntimeException("user must have an address but user.address is null.");
+            
+        try {
+            a = aS.registerAdresse(u.getAdresse());
+        } catch (RuntimeException e) {
+            throw e;
+        }
         
         Utilisateur user = Utilisateur.builder()
                 .pseudo(u.getPseudo())
@@ -48,6 +73,7 @@ public class UserManager implements userService {
                 .prenom(u.getPrenom())
                 .telephone(u.getTelephone())
                 .role(roleUser)
+                .adresse(a)
                 .build();
         
         if(!doCheckUserRegistering(user)) 
@@ -56,11 +82,11 @@ public class UserManager implements userService {
         user.setPassword("{bcrypt}" + passwordEncoder.encode(u.getPassword()));
         
         try {
-            entityManager.clear();
             entityManager.persist(user);
             entityManager.flush();
             return user;
         } catch (RuntimeException e) {
+//            throw new RuntimeException("Error registering user : " + e.getMessage(), e);
             throw new RuntimeException("Last name and First name are mandatory parameters. : " + user.toString());
         }
     }
@@ -91,7 +117,6 @@ public class UserManager implements userService {
         if(pseudo == null || pseudo.isBlank()) 
             return false;
 
-        entityManager.clear();
         final Utilisateur u = uR.findByPseudo(pseudo);
 
         Boolean isUnique = false;
@@ -108,7 +133,6 @@ public class UserManager implements userService {
         if(email == null || email.isBlank()) 
             return false;
 
-        entityManager.clear();
         final Utilisateur u = uR.findByEmail(email);
 
         Boolean isUnique = false;

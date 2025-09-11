@@ -1,0 +1,190 @@
+<!-- src/app/features/register/register.component.html -->
+<div class="register-container">
+  <div class="register-form">
+    <h2 translate>Nouveau Profil</h2>
+
+    <!-- Messages -->
+    <div *ngIf="errorMessage" class="alert alert-error">
+      {{ errorMessage }}
+    </div>
+    
+    <div *ngIf="successMessage" class="alert alert-success">
+      {{ successMessage }}
+    </div>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      
+      <!-- Pseudo -->
+      <div class="form-group">
+        <label for="pseudo" translate>Pseudo (*)</label>
+        <input 
+          id="pseudo"
+          type="text" 
+          formControlName="pseudo"
+          [class.error]="isFieldInvalid('pseudo')"
+          placeholder="Votre pseudo"
+        />
+        <div *ngIf="isFieldInvalid('pseudo')" class="error-message">
+          {{ getFieldError('pseudo') }}
+        </div>
+      </div>
+
+      <!-- Nom -->
+      <div class="form-group">
+        <label for="nom" translate>Nom (*)</label>
+        <input 
+          id="nom"
+          type="text" 
+          formControlName="nom"
+          [class.error]="isFieldInvalid('nom')"
+          placeholder="Votre nom"
+        />
+        <div *ngIf="isFieldInvalid('nom')" class="error-message">
+          {{ getFieldError('nom') }}
+        </div>
+      </div>
+
+      <!-- Prénom -->
+      <div class="form-group">
+        <label for="prenom" translate>Prénom (*)</label>
+        <input 
+          id="prenom"
+          type="text" 
+          formControlName="prenom"
+          [class.error]="isFieldInvalid('prenom')"
+          placeholder="Votre prénom"
+        />
+        <div *ngIf="isFieldInvalid('prenom')" class="error-message">
+          {{ getFieldError('prenom') }}
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div class="form-group">
+        <label for="email" translate>Email (*)</label>
+        <input 
+          id="email"
+          type="email" 
+          formControlName="email"
+          [class.error]="isFieldInvalid('email')"
+          placeholder="votre.email@exemple.com"
+        />
+        <div *ngIf="isFieldInvalid('email')" class="error-message">
+          {{ getFieldError('email') }}
+        </div>
+      </div>
+
+      <!-- Téléphone -->
+      <div class="form-group">
+        <label for="telephone" translate>Téléphone</label>
+        <input 
+          id="telephone"
+          type="tel" 
+          formControlName="telephone"
+          placeholder="06 12 34 56 78"
+        />
+      </div>
+
+      <!-- Adresse -->
+      <fieldset formGroupName="adresse">
+        <legend translate>Adresse (*)</legend>
+        
+        <!-- Rue -->
+        <div class="form-group">
+          <label for="rue" translate>Rue</label>
+          <input 
+            id="rue"
+            type="text" 
+            formControlName="rue"
+            [class.error]="isFieldInvalid('adresse.rue')"
+            placeholder="123 rue de la Paix"
+          />
+          <div *ngIf="isFieldInvalid('adresse.rue')" class="error-message">
+            La rue est requise
+          </div>
+        </div>
+
+        <!-- Code postal et Ville sur la même ligne -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="codePostal" translate>Code postal</label>
+            <input 
+              id="codePostal"
+              type="text" 
+              formControlName="codePostal"
+              [class.error]="isFieldInvalid('adresse.codePostal')"
+              placeholder="75000"
+              maxlength="5"
+            />
+            <div *ngIf="isFieldInvalid('adresse.codePostal')" class="error-message">
+              Code postal requis (5 chiffres)
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="ville" translate>Ville</label>
+            <input 
+              id="ville"
+              type="text" 
+              formControlName="ville"
+              [class.error]="isFieldInvalid('adresse.ville')"
+              placeholder="Paris"
+            />
+            <div *ngIf="isFieldInvalid('adresse.ville')" class="error-message">
+              La ville est requise
+            </div>
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- Mot de passe -->
+      <div class="form-group">
+        <label for="password" translate>Mot de passe (*)</label>
+        <input 
+          id="password"
+          type="password" 
+          formControlName="password"
+          [class.error]="isFieldInvalid('password')"
+          placeholder="Mot de passe sécurisé"
+        />
+        <div *ngIf="isFieldInvalid('password')" class="error-message">
+          {{ getFieldError('password') }}
+        </div>
+      </div>
+
+      <!-- Confirmation -->
+      <div class="form-group">
+        <label for="confirmPassword" translate>Confirmation</label>
+        <input 
+          id="confirmPassword"
+          type="password" 
+          formControlName="confirmPassword"
+          [class.error]="isFieldInvalid('confirmPassword') || passwordMismatch"
+          placeholder="Confirmez votre mot de passe"
+        />
+        <div *ngIf="passwordMismatch" class="error-message">
+          Les mots de passe ne correspondent pas
+        </div>
+        <div *ngIf="isFieldInvalid('confirmPassword') && !passwordMismatch" class="error-message">
+          La confirmation est requise
+        </div>
+      </div>
+
+      <!-- Boutons -->
+      <div class="form-actions">
+        <button 
+          type="submit" 
+          [disabled]="isLoading || registerForm.invalid"
+          class="btn btn-primary"
+        >
+          <span *ngIf="isLoading">Création en cours...</span>
+          <span *ngIf="!isLoading" translate>Créer</span>
+        </button>
+        
+        <a routerLink="/auth/login" class="btn btn-secondary" translate>
+          Déjà un compte ? Se connecter
+        </a>
+      </div>
+    </form>
+  </div>
+</div>

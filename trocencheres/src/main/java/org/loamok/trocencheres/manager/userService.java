@@ -8,6 +8,7 @@ import org.loamok.trocencheres.entity.Utilisateur;
  */
 public interface userService {
     Utilisateur registerUser(Utilisateur u);
+    Utilisateur registerUser(Utilisateur u, Boolean isAdmin);
     Boolean doCheckUserRegistering(Utilisateur u);
     Boolean checkPseudoUnique(String pseudo);
     Boolean checkEmailUnique(String email);
