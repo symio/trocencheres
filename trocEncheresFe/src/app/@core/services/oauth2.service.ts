@@ -36,7 +36,7 @@ export class OAuth2Service {
     public userInfo$ = this.userInfoSubject.asObservable();
     public isAuthenticated$ = this.isAuthenticatedSubject.asObservable();
 
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient) { }
 
     /**
      * Authentification avec Client Credentials Flow
@@ -61,10 +61,10 @@ export class OAuth2Service {
             tap(response => {
                 // Stocker le token
                 this.storeToken(response.access_token);
-        
+
                 // Extraire et stocker les infos utilisateur
                 this.extractAndStoreUserInfo(response.access_token);
-        
+
                 // Mettre à jour les subjects
                 this.tokenSubject.next(response.access_token);
                 this.isAuthenticatedSubject.next(true);
@@ -80,13 +80,21 @@ export class OAuth2Service {
     /**
      * Déconnexion
      */
-    logout(): void {
-        
-        this.removeStoredToken();
-        this.removeStoredUserInfo();
-        this.tokenSubject.next(null);
-        this.userInfoSubject.next(null);
-        this.isAuthenticatedSubject.next(false);
+    logout(): Observable<void> {
+        return new Observable<void>((observer) => {
+            try {
+                this.removeStoredToken();
+                this.removeStoredUserInfo();
+                this.tokenSubject.next(null);
+                this.userInfoSubject.next(null);
+                this.isAuthenticatedSubject.next(false);
+
+                observer.next();
+                observer.complete();
+            } catch (error) {
+                observer.error(error);
+            }
+        });
     }
 
     /**
@@ -116,7 +124,7 @@ export class OAuth2Service {
         if (!userInfo) return false;
 
         const hasRole = userInfo.authority === `ROLE_${role.toUpperCase()}`;
-        
+
         return hasRole;
     }
 
@@ -126,7 +134,7 @@ export class OAuth2Service {
     isAdmin(): boolean {
         const userInfo = this.userInfoSubject.value;
         const isAdmin = userInfo?.isAdmin || false;
-        
+
         return isAdmin;
     }
 
@@ -205,7 +213,7 @@ export class OAuth2Service {
             const exp = payload.exp;
 
             if (!exp) {
-                
+
                 return true;
             }
 

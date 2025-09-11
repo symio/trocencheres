@@ -1,7 +1,8 @@
 // src/app/features/logout/logout.component.ts
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthenticationService, CredentialsService } from '@auth';
+import { OAuth2Service } from '@app/@core/services/oauth2.service';
+import { CredentialsService } from '@auth';
 
 @Component({
   selector: 'app-logout',
@@ -11,29 +12,22 @@ import { AuthenticationService, CredentialsService } from '@auth';
 })
 export class LogoutComponent implements OnInit {
   constructor(
-    private readonly _authService: AuthenticationService,
+    private readonly _authService: OAuth2Service,
     private readonly _router: Router,
     private readonly _credentialsService: CredentialsService,
   ) {}
 
-  ngOnInit() {
-    if (!this._credentialsService.isAuthenticated()) {
-      this._credentialsService.setCredentials();
-      this._router.navigate(['/login']).then(() => {
-        window.location.reload();
-      });
-    } else {
-      this._authService.logout().subscribe({
-        next: () => {
-          this._credentialsService.setCredentials();
-          this._router.navigate(['/login']).then(() => {
-            window.location.reload();
-          });
-        },
-        error: () => {
-          console.error('Error logging out');
-        },
-      });
-    }
+   ngOnInit() {
+    this._authService.logout().subscribe({
+      next: () => {
+        this._credentialsService.setCredentials();
+        this._router.navigate(['/auth/login']).then(() => {
+          window.location.reload();
+        });
+      },
+      error: (err) => {
+        console.error('Erreur lors de la déconnexion :', err);
+      }
+    });
   }
 }
