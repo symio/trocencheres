@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NavigationEnd, Router } from '@angular/router';
+import { NavigationEnd, Router, RouterModule } from '@angular/router';
 import { environment } from '@env/environment';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { filter } from 'rxjs/operators';
@@ -8,12 +8,13 @@ import { NavMode, ShellService } from '@app/shell/services/shell.service';
 import { webSidebarMenuItems } from '@core/constants';
 import { CredentialsService } from '@auth';
 import { NavMenuItem } from '@core/interfaces';
+import { TranslateModule } from '@ngx-translate/core';
 
 @UntilDestroy({ checkProperties: true })
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [CommonModule], // ✅ nécessaire pour ngIf, ngFor, ngClass...
+  imports: [ CommonModule, TranslateModule, RouterModule ], 
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss'],
 })
