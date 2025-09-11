@@ -1,15 +1,19 @@
 package org.loamok.trocencheres.security;
 
+import java.util.function.Supplier;
 import org.apache.commons.logging.*;
 import org.loamok.trocencheres.security.jwt.JwtAuthenticationFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.*;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.*;
+import org.springframework.security.authorization.AuthorizationDecision;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.access.intercept.RequestAuthorizationContext;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
@@ -24,9 +28,6 @@ public class SecurityConfig {
     @Autowired
     private AuthenticationProvider authenticationProvider;
 
-    /**
-     * Configuration pour les APIs OAuth2 - priorité haute
-     */
     @Bean
     public SecurityFilterChain oauth2ApiFilterChain(HttpSecurity http) throws Exception {
         http
@@ -35,41 +36,43 @@ public class SecurityConfig {
                 // APIs ouvertes au public sans authentification
                 .requestMatchers(HttpMethod.POST, "/profil/register").permitAll()
                 .requestMatchers(HttpMethod.POST, "/authorize/token").permitAll()
-                // APIs OAuth2 protégées par scopes
+                
+                // APIs basées sur les rôles uniquement
                 // adresses
-                .requestMatchers(HttpMethod.GET, "/adresses").hasAuthority("SCOPE_read")
-                .requestMatchers(HttpMethod.POST, "/adresses").hasAuthority("SCOPE_write")
-                .requestMatchers(HttpMethod.PUT, "/adresses").hasAuthority("SCOPE_write")
-                .requestMatchers(HttpMethod.DELETE, "/adresses").hasAuthority("SCOPE_admin")
+                .requestMatchers(HttpMethod.GET, "/adresses").hasAnyRole("USER", "ADMIN")
+                .requestMatchers(HttpMethod.POST, "/adresses").hasAnyRole("USER", "ADMIN")
+                .requestMatchers(HttpMethod.PUT, "/adresses").hasAnyRole("USER", "ADMIN")
+                .requestMatchers(HttpMethod.DELETE, "/adresses").hasRole("ADMIN")
                     
                 // articlesAVendres
-                .requestMatchers(HttpMethod.GET, "/articlesAVendres").hasAuthority("SCOPE_read")
-                .requestMatchers(HttpMethod.POST, "/articlesAVendres").hasAuthority("SCOPE_write")
-                .requestMatchers(HttpMethod.PUT, "/articlesAVendres").hasAuthority("SCOPE_write")
-                .requestMatchers(HttpMethod.DELETE, "/articlesAVendres").hasAuthority("SCOPE_admin")
+                .requestMatchers(HttpMethod.GET, "/articlesAVendres").hasAnyRole("USER", "ADMIN")
+                .requestMatchers(HttpMethod.POST, "/articlesAVendres").hasAnyRole("USER", "ADMIN")
+                .requestMatchers(HttpMethod.PUT, "/articlesAVendres").hasAnyRole("USER", "ADMIN")
+                .requestMatchers(HttpMethod.DELETE, "/articlesAVendres").hasRole("ADMIN")
                     
                 // categories
-                .requestMatchers(HttpMethod.GET, "/categories").hasAuthority("SCOPE_read")
-                .requestMatchers(HttpMethod.POST, "/categories").hasAuthority("SCOPE_write")
-                .requestMatchers(HttpMethod.PUT, "/categories").hasAuthority("SCOPE_write")
-                .requestMatchers(HttpMethod.DELETE, "/categories").hasAuthority("SCOPE_admin")
+                .requestMatchers(HttpMethod.GET, "/categories").hasAnyRole("USER", "ADMIN")
+                .requestMatchers(HttpMethod.POST, "/categories").hasAnyRole("USER", "ADMIN")
+                .requestMatchers(HttpMethod.PUT, "/categories").hasAnyRole("USER", "ADMIN")
+                .requestMatchers(HttpMethod.DELETE, "/categories").hasRole("ADMIN")
                     
                 // encheres
-                .requestMatchers(HttpMethod.GET, "/encheres").hasAuthority("SCOPE_read")
-                .requestMatchers(HttpMethod.POST, "/encheres").hasAuthority("SCOPE_write")
-                .requestMatchers(HttpMethod.PUT, "/encheres").hasAuthority("SCOPE_write")
-                .requestMatchers(HttpMethod.DELETE, "/encheres").hasAuthority("SCOPE_admin")
+                .requestMatchers(HttpMethod.GET, "/encheres").hasAnyRole("USER", "ADMIN")
+                .requestMatchers(HttpMethod.POST, "/encheres").hasAnyRole("USER", "ADMIN")
+                .requestMatchers(HttpMethod.PUT, "/encheres").hasAnyRole("USER", "ADMIN")
+                .requestMatchers(HttpMethod.DELETE, "/encheres").hasRole("ADMIN")
                     
-                // profiles
-                .requestMatchers(HttpMethod.GET, "/profile").hasAuthority("SCOPE_admin")
+                // profiles - Admin seulement
+                .requestMatchers(HttpMethod.GET, "/profile").hasRole("ADMIN")
                     
                 // utilisateurs
-                .requestMatchers(HttpMethod.GET, "/utilisateurs").hasAuthority("SCOPE_read")
-                .requestMatchers(HttpMethod.POST, "/utilisateurs").hasAuthority("SCOPE_write")
-                .requestMatchers(HttpMethod.PUT, "/utilisateurs").hasAuthority("SCOPE_write")
-                .requestMatchers(HttpMethod.DELETE, "/utilisateurs").hasAuthority("SCOPE_admin")
+                .requestMatchers(HttpMethod.GET, "/utilisateurs").hasAnyRole("USER", "ADMIN")
+                .requestMatchers(HttpMethod.POST, "/utilisateurs").hasAnyRole("USER", "ADMIN")
+                .requestMatchers(HttpMethod.PUT, "/utilisateurs").hasAnyRole("USER", "ADMIN")
+                .requestMatchers(HttpMethod.DELETE, "/utilisateurs").hasRole("ADMIN")
 
-                .anyRequest().authenticated()
+                // tout le reste
+                .anyRequest().access(this::hasAccessScopeAndAuthenticated)
             )
             .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
@@ -78,5 +81,20 @@ public class SecurityConfig {
             
         return http.build();
     }
-
+    
+    /**
+     * Vérifie que l'utilisateur a le scope "access" ET est authentifié
+     * Cette méthode ajoute une couche de sécurité supplémentaire
+     */
+    private AuthorizationDecision hasAccessScopeAndAuthenticated(Supplier<Authentication> authentication, RequestAuthorizationContext context) {
+        Authentication auth = authentication.get();
+        if (auth == null || !auth.isAuthenticated())
+            return new AuthorizationDecision(false);
+        
+        // Vérifier que l'utilisateur a le scope "access"
+        boolean hasAccessScope = auth.getAuthorities().stream()
+            .anyMatch(authority -> authority.getAuthority().equals("SCOPE_access"));
+            
+        return new AuthorizationDecision(hasAccessScope);
+    }
 }

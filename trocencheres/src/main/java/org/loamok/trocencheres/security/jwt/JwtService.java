@@ -44,41 +44,8 @@ public class JwtService {
         return extractClaim(token, Claims::getSubject);
     }
 
-    // Valider le token
-    public boolean validateToken(String token, String username) {
-        final String tokenUsername = extractUserName(token);
-        return (tokenUsername.equals(username) && !isTokenExpired(token));
-    }
-
-    // Validation du jeton
-    public boolean isTokenValid(String token, UserDetails userDetails) {
-        final String username = extractUserName(token);
-        return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
-    }
-
     private boolean isTokenExpired(String token) {
         return extractExpiration(token).before(new Date());
-    }
-
-    // Générer le jeton JWT
-    public String generateToken(Map<String, Object> extraClaims, UserDetails userDetails) {
-        JwtBuilder builder = Jwts.builder();
-
-        // D'abord définir le subject et les dates
-        builder.subject(userDetails.getUsername())
-                .issuedAt(new Date(System.currentTimeMillis()));
-        builder.expiration(new Date(System.currentTimeMillis() + 1000 * 60 * 24));
-
-        // Puis ajouter les claims supplémentaires si ils existent
-        if (extraClaims != null && !extraClaims.isEmpty()) {
-            builder.claims(extraClaims);
-        }
-
-        return builder.signWith(getSignInKey()).compact();
-    }
-
-    public String generateToken(UserDetails userDetails) {
-        return generateToken(new HashMap<>(), userDetails);
     }
 
     private Date extractExpiration(String token) {
