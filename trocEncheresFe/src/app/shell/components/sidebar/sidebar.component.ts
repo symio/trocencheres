@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { NavigationEnd, Router } from '@angular/router';
 import { environment } from '@env/environment';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
@@ -11,9 +12,10 @@ import { NavMenuItem } from '@core/interfaces';
 @UntilDestroy({ checkProperties: true })
 @Component({
   selector: 'app-sidebar',
+  standalone: true,
+  imports: [CommonModule], // ✅ nécessaire pour ngIf, ngFor, ngClass...
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss'],
-  standalone: true,
 })
 export class SidebarComponent implements OnInit {
   version: string = environment.version;

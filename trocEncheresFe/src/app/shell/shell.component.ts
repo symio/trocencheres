@@ -4,15 +4,14 @@ import { UntilDestroy } from '@ngneat/until-destroy';
 import { Router, RouterModule } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { CommonModule } from '@angular/common';
 
 @UntilDestroy()
 @Component({
   selector: 'app-shell',
   standalone: true,
   imports: [
-    RouterModule,
-    SidebarComponent,
-    HeaderComponent,
+    RouterModule, SidebarComponent, HeaderComponent, CommonModule
   ],
   templateUrl: './shell.component.html',
   styleUrls: ['./shell.component.scss']
