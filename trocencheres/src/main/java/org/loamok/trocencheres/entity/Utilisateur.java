@@ -10,6 +10,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
@@ -39,7 +40,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 @Inheritance(strategy = InheritanceType.JOINED)
 @SuperBuilder
 @Entity
-@Table(name = "UTILISATEURS", uniqueConstraints = { @UniqueConstraint(columnNames = { "pseudo", "email" }) })
+@Table(name = "UTILISATEURS", uniqueConstraints = {
+    @UniqueConstraint(columnNames = {"pseudo", "email"})})
 public class Utilisateur implements UserDetails {
     @Id
     @Column(name = "pseudo", length = 30)
@@ -53,29 +55,36 @@ public class Utilisateur implements UserDetails {
     @Column(name = "telephone", nullable = true, length = 15)
     private String telephone;
     @Column(name = "credit", nullable = false)
-    private @Builder.Default Integer credit = 10;
+    private @Builder.Default
+    Integer credit = 10;
     // -- relations
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     @JoinColumn(name = "no_adresse")
     private Adresse adresse;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_role", nullable = false)
+    private Role role;
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @Column(name = "mot_de_passe", nullable = false, length = 69)
     private String password;
-    @JsonIgnore
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
-    @JoinColumn(name = "id_role")
-    private Role role;
-    
+
+//    @JsonIgnore
     private String authority;
+    @JsonIgnore
     private Boolean isAdmin;
-    
+
     @Override
+    @JsonIgnore
     public Collection<? extends GrantedAuthority> getAuthorities() {
         authority = role.getRole();
         isAdmin = role.getIsAdmin();
         return Arrays.asList(new SimpleGrantedAuthority(authority));
     }
 
+    public String getAuthority() {
+        return role.getRole();
+    }
+    
     @Override
     public String getUsername() {
         return pseudo;
