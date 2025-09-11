@@ -1,19 +1,19 @@
 <nav>
-  <p class="title" translate>Angular Boiler Plate V18</p>
-  <app-language-selector></app-language-selector>
-</nav>
+    <p class="title" translate>Les Objets sont nos amis</p>
+    <app-language-selector></app-language-selector>
+    <!-- Menu utilisateur -->
+    <div class="user-menu" *ngIf="isAuthenticated$ | async as isAuth">
+        <button (click)="menuHidden = !menuHidden">Menu</button>
 
-<!-- Popover menu -->
-<ng-template #menu let-hide>
-  <!-- This menu-content is generic class can be override with custom style as well, adjust width value directly as per need -->
-  <div class="popper-menu-content" style="width: 150px">
-    <ul>
-      <li (click)="hide()">
-        <label translate>Profile</label>
-      </li>
-      <li (click)="hide()" routerLink="/logout">
-        <label translate>Logout</label>
-      </li>
-    </ul>
-  </div>
-</ng-template>
+        <div class="popper-menu-content" *ngIf="!menuHidden" style="width: 150px">
+            <ul>
+                <li>
+                    <a routerLink="/profile" (click)="menuHidden = true" translate>Profile</a>
+                </li>
+                <li>
+                    <a routerLink="/auth/logout" (click)="menuHidden = true" translate>Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
