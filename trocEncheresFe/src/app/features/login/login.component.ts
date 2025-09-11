@@ -59,7 +59,6 @@ export class LoginComponent implements OnInit {
 
         this.oauth2Service.login(credentials).subscribe({
             next: (response) => {
-                console.log('Connexion réussie:', response);
                 this.router.navigate([this.returnUrl]);
             },
             error: (error) => {

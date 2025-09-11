@@ -9,38 +9,38 @@
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
       <!-- Champ Client ID -->
       <div class="form-group">
-        <label for="clientId">Client ID</label>
+        <label for="clientId">Pseudonyme</label>
         <input
           type="text"
           id="clientId"
           formControlName="clientId"
           class="form-control"
           [class.is-invalid]="clientId?.invalid && clientId?.touched"
-          placeholder="Entrez votre client ID"
+          placeholder="Entrez votre Pseudonyme"
           autocomplete="username"
         >
         <div class="invalid-feedback" *ngIf="clientId?.invalid && clientId?.touched">
           <div *ngIf="clientId?.errors?.['required']">
-            Le client ID est requis
+            Le pseudonyme est requis
           </div>
         </div>
       </div>
 
       <!-- Champ Client Secret -->
       <div class="form-group">
-        <label for="clientSecret">Client Secret</label>
+        <label for="clientSecret">Mot de passe</label>
         <input
           type="password"
           id="clientSecret"
           formControlName="clientSecret"
           class="form-control"
           [class.is-invalid]="clientSecret?.invalid && clientSecret?.touched"
-          placeholder="Entrez votre client secret"
+          placeholder="Entrez votre mot de passe"
           autocomplete="current-password"
         >
         <div class="invalid-feedback" *ngIf="clientSecret?.invalid && clientSecret?.touched">
           <div *ngIf="clientSecret?.errors?.['required']">
-            Le client secret est requis
+            Le mot de passe est requis
           </div>
         </div>
       </div>
