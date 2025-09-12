@@ -1,0 +1,233 @@
+
+<!-- src/app/pages/users/admin-users-list/admin-users-list.component.html -->
+<div class="admin-users-container">
+  <div class="admin-users-header">
+    <div class="header-title">
+      <h2>Gestion des Utilisateurs</h2>
+      <div class="admin-badge">
+        <span class="badge">Mode Administrateur</span>
+      </div>
+    </div>
+    
+    <div class="header-actions">
+      <button 
+        (click)="createUser()" 
+        class="btn btn-primary"
+      >
+        + Créer un utilisateur
+      </button>
+    </div>
+  </div>
+
+  <!-- Messages -->
+  <div *ngIf="errorMessage" class="alert alert-error">
+    {{ errorMessage }}
+  </div>
+  
+  <div *ngIf="successMessage" class="alert alert-success">
+    {{ successMessage }}
+  </div>
+
+  <!-- Filtres et recherche -->
+  <div class="filters-section">
+    <div class="search-group">
+      <div class="search-input-group">
+        <select [(ngModel)]="searchType" (change)="onSearchTypeChange()" class="search-type-select">
+          <option value="all">Recherche globale</option>
+          <option value="pseudo">Par pseudo</option>
+          <option value="email">Par email</option>
+          <option value="nom">Par nom/prénom</option>
+        </select>
+        <input 
+          type="text" 
+          [formControl]="searchControl" 
+          placeholder="Rechercher un utilisateur..."
+          class="search-input"
+        />
+      </div>
+      
+      <select [(ngModel)]="selectedRole" (change)="onRoleFilterChange()" class="role-filter">
+        <option value="">Tous les rôles</option>
+        <option *ngFor="let role of availableRoles" [value]="role.role">
+          {{ getRoleDisplayName(role.role) }}
+        </option>
+      </select>
+      
+      <button (click)="clearFilters()" class="btn btn-secondary btn-sm">
+        Effacer les filtres
+      </button>
+    </div>
+  </div>
+
+  <!-- Statistiques rapides -->
+  <div class="stats-section">
+    <div class="stat-card">
+      <div class="stat-value">{{ totalElements }}</div>
+      <div class="stat-label">Utilisateurs total</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value">{{ filteredUsers.length }}</div>
+      <div class="stat-label">Affichés</div>
+    </div>
+  </div>
+
+  <!-- Tableau des utilisateurs -->
+  <div class="users-table-container">
+    <div *ngIf="isLoading" class="loading-overlay">
+      <div class="spinner"></div>
+      Chargement des utilisateurs...
+    </div>
+
+    <table class="users-table" *ngIf="!isLoading">
+      <thead>
+        <tr>
+          <th (click)="onSort('pseudo')" [class.sortable]="true" [class.sorted]="sortField === 'pseudo'">
+            Pseudo
+            <span *ngIf="sortField === 'pseudo'" class="sort-indicator">
+              {{ sortDirection === 'asc' ? '↑' : '↓' }}
+            </span>
+          </th>
+          <th (click)="onSort('fullName')" [class.sortable]="true" [class.sorted]="sortField === 'fullName'">
+            Nom complet
+            <span *ngIf="sortField === 'fullName'" class="sort-indicator">
+              {{ sortDirection === 'asc' ? '↑' : '↓' }}
+            </span>
+          </th>
+          <th (click)="onSort('email')" [class.sortable]="true" [class.sorted]="sortField === 'email'">
+            Email
+            <span *ngIf="sortField === 'email'" class="sort-indicator">
+              {{ sortDirection === 'asc' ? '↑' : '↓' }}
+            </span>
+          </th>
+          <th>Téléphone</th>
+          <th (click)="onSort('role')" [class.sortable]="true" [class.sorted]="sortField === 'role'">
+            Rôle
+            <span *ngIf="sortField === 'role'" class="sort-indicator">
+              {{ sortDirection === 'asc' ? '↑' : '↓' }}
+            </span>
+          </th>
+          <th (click)="onSort('credit')" [class.sortable]="true" [class.sorted]="sortField === 'credit'">
+            Crédit
+            <span *ngIf="sortField === 'credit'" class="sort-indicator">
+              {{ sortDirection === 'asc' ? '↑' : '↓' }}
+            </span>
+          </th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of filteredUsers; trackBy: trackByPseudo" class="user-row">
+          <td class="pseudo-cell">
+            <strong>{{ user.pseudo }}</strong>
+          </td>
+          <td class="name-cell">
+            {{ user.nom }} {{ user.prenom }}
+          </td>
+          <td class="email-cell">
+            <a [href]="'mailto:' + user.email">{{ user.email }}</a>
+          </td>
+          <td class="phone-cell">
+            {{ user.telephone || '-' }}
+          </td>
+          <td class="role-cell">
+            <span [class]="'badge ' + getRoleBadgeClass(user.role?.role)">
+              {{ getRoleDisplayName(user.role?.role) }}
+            </span>
+          </td>
+          <td class="credit-cell">
+            {{ user.credit || 0 }} Pt
+          </td>
+          <td class="actions-cell">
+            <div class="action-buttons">
+              <button 
+                (click)="viewUserDetails(user.pseudo)" 
+                class="btn btn-info btn-sm"
+                title="Voir les détails"
+              >
+                👁️
+              </button>
+              <button 
+                (click)="editUser(user.pseudo)" 
+                class="btn btn-warning btn-sm"
+                title="Modifier"
+              >
+                ✏️
+              </button>
+              <button 
+                (click)="deleteUser(user)" 
+                class="btn btn-danger btn-sm"
+                title="Supprimer"
+                [disabled]="user.role?.role === 'ROLE_ADMIN'"
+              >
+                🗑️
+              </button>
+            </div>
+          </td>
+        </tr>
+        
+        <!-- Ligne vide si aucun utilisateur -->
+        <tr *ngIf="filteredUsers.length === 0 && !isLoading">
+          <td colspan="7" class="no-users">
+            <div class="no-users-message">
+              <p>Aucun utilisateur trouvé</p>
+              <button (click)="clearFilters()" class="btn btn-secondary btn-sm">
+                Réinitialiser les filtres
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Pagination -->
+  <div class="pagination-section" *ngIf="totalPages > 1 && !isLoading">
+    <div class="pagination-info">
+      Affichage de {{ (currentPage * pageSize) + 1 }} à 
+      {{ Math.min((currentPage + 1) * pageSize, totalElements) }} 
+      sur {{ totalElements }} utilisateurs
+    </div>
+    
+    <div class="pagination-controls">
+      <!-- Sélecteur de taille de page -->
+      <div class="page-size-selector">
+        <label>Afficher :</label>
+        <select [(ngModel)]="pageSize" (change)="onPageSizeChange()">
+          <option *ngFor="let size of pageSizes" [value]="size">
+            {{ size }} par page
+          </option>
+        </select>
+      </div>
+      
+      <!-- Navigation des pages -->
+      <div class="page-navigation">
+        <button 
+          (click)="onPageChange(currentPage - 1)" 
+          [disabled]="currentPage === 0"
+          class="btn btn-secondary btn-sm"
+        >
+          ‹ Précédent
+        </button>
+        
+        <span class="page-numbers">
+          <button 
+            *ngFor="let page of getPageNumbers()" 
+            (click)="onPageChange(page)"
+            [class.active]="page === currentPage"
+            class="btn btn-page"
+          >
+            {{ page + 1 }}
+          </button>
+        </span>
+        
+        <button 
+          (click)="onPageChange(currentPage + 1)" 
+          [disabled]="currentPage >= totalPages - 1"
+          class="btn btn-secondary btn-sm"
+        >
+          Suivant ›
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -4,6 +4,7 @@ import { authRoutes } from './auth/auth.routing';
 import { ShellComponent } from './shell/shell.component';
 import { UnauthorizedComponent } from './features/unauthorized/unauthorized.component';
 import { AuthGuard } from '@core/guards/auth.guard';
+import { AdminGuard } from './@core/guards/admin.guard';
 
 export const routes: Routes = [
   // Routes d'authentification (publiques)
@@ -29,7 +30,7 @@ export const routes: Routes = [
       },
       {
         path: 'users',
-        loadChildren: () => import('./pages/users/users.module').then(m => m.UsersModule)
+        loadChildren: () => import('./pages/users/admin-users.module').then(m => m.AdminUsersModule)
       },
       // Ajouter d'autres routes protégées ici...
       {

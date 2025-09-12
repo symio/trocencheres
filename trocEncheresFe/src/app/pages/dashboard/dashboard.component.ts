@@ -1,3 +1,4 @@
+// src/app/pages/dashboard/dashboard.component.ts
 import { Component } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 

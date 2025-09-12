@@ -1,0 +1,204 @@
+<!-- src/app/pages/users/admin-user-details/admin-user-details.component.html -->
+<div class="admin-user-details-container">
+  <div class="details-header">
+    <div class="header-navigation">
+      <button (click)="goBack()" class="btn btn-secondary">
+        ← Retour à la liste
+      </button>
+    </div>
+    
+    <div class="header-title">
+      <h2>Détails de l'utilisateur</h2>
+      <div class="admin-badge">
+        <span class="badge">Mode Administrateur</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Messages -->
+  <div *ngIf="errorMessage" class="alert alert-error">
+    {{ errorMessage }}
+  </div>
+  
+  <div *ngIf="successMessage" class="alert alert-success">
+    {{ successMessage }}
+  </div>
+
+  <!-- Loader -->
+  <div *ngIf="isLoading" class="loading-container">
+    <div class="spinner"></div>
+    Chargement des détails...
+  </div>
+
+  <!-- Contenu utilisateur -->
+  <div *ngIf="!isLoading && user" class="user-details-content">
+    
+    <!-- Informations principales -->
+    <div class="details-card main-info">
+      <div class="card-header">
+        <h3>Informations principales</h3>
+        <div class="user-status">
+          <span [class]="'badge ' + getRoleBadgeClass(user.role?.role)">
+            {{ getRoleIcon(user.role?.role) }} {{ getRoleDisplayName(user.role?.role) }}
+          </span>
+        </div>
+      </div>
+      
+      <div class="card-content">
+        <div class="info-grid">
+          <div class="info-item">
+            <label>Pseudo</label>
+            <div class="info-value primary">{{ user.pseudo || 'Non défini' }}</div>
+          </div>
+          
+          <div class="info-item">
+            <label>Prénom</label>
+            <div class="info-value">{{ user.prenom || 'Non défini' }}</div>
+          </div>
+          
+          <div class="info-item">
+            <label>Nom de famille</label>
+            <div class="info-value">{{ user.nom || 'Non défini' }}</div>
+          </div>
+          
+          <div class="info-item">
+            <label>Adresse email</label>
+            <div class="info-value">
+              <a *ngIf="user.email" [href]="'mailto:' + user.email">{{ user.email }}</a>
+              <span *ngIf="!user.email">Non défini</span>
+            </div>
+          </div>
+          
+          <div class="info-item">
+            <label>Téléphone</label>
+            <div class="info-value">
+              <a *ngIf="user.telephone" [href]="'tel:' + user.telephone">{{ user.telephone }}</a>
+              <span *ngIf="!user.telephone">Non défini</span>
+            </div>
+          </div>
+          
+          <div class="info-item">
+            <label>Crédit disponible</label>
+            <div class="info-value credit">{{ user.credit || 0 }} €</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Informations d'adresse -->
+    <div class="details-card address-info">
+      <div class="card-header">
+        <h3>Adresse</h3>
+      </div>
+      
+      <div class="card-content">
+        <div *ngIf="user.adresse" class="address-display">
+          <div class="address-item">
+            <label>Rue</label>
+            <div class="info-value">{{ user.adresse.rue || 'Non définie' }}</div>
+          </div>
+          
+          <div class="address-item">
+            <label>Code postal</label>
+            <div class="info-value">{{ user.adresse.codePostal || 'Non défini' }}</div>
+          </div>
+          
+          <div class="address-item">
+            <label>Ville</label>
+            <div class="info-value">{{ user.adresse.ville || 'Non définie' }}</div>
+          </div>
+          
+          <div class="address-complete">
+            <label>Adresse complète</label>
+            <div class="info-value">{{ getFullAddress() }}</div>
+          </div>
+        </div>
+        
+        <div *ngIf="!user.adresse" class="no-address">
+          <p>Aucune adresse renseignée</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Informations système -->
+    <div class="details-card system-info">
+      <div class="card-header">
+        <h3>Informations système</h3>
+      </div>
+      
+      <div class="card-content">
+        <div class="info-grid">
+          <div class="info-item">
+            <label>Rôle système</label>
+            <div class="info-value">
+              <span [class]="'role-badge ' + getRoleBadgeClass(user.role?.role)">
+                {{ getRoleIcon(user.role?.role) }} {{ user.role?.role || 'Non défini' }}
+              </span>
+            </div>
+          </div>
+          
+          <div class="info-item">
+            <label>Permissions administrateur</label>
+            <div class="info-value">
+              <span [class]="user.role?.isAdmin ? 'status-yes' : 'status-no'">
+                {{ user.role?.isAdmin ? 'Oui' : 'Non' }}
+              </span>
+            </div>
+          </div>
+          
+          <div class="info-item" *ngIf="user.createdAt">
+            <label>Date de création</label>
+            <div class="info-value">{{ formatDate(user.createdAt) }}</div>
+          </div>
+          
+          <div class="info-item" *ngIf="user.lastLogin">
+            <label>Dernière connexion</label>
+            <div class="info-value">{{ formatDate(user.lastLogin) }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Actions administrateur -->
+    <div class="admin-actions-card">
+      <div class="card-header">
+        <h3>Actions administrateur</h3>
+      </div>
+      
+      <div class="card-content">
+        <div class="action-buttons">
+          <button 
+            (click)="editUser()" 
+            class="btn btn-primary"
+            [disabled]="isLoading"
+          >
+            ✏️ Modifier l'utilisateur
+          </button>
+          
+          <button 
+            (click)="deleteUser()" 
+            class="btn btn-danger"
+            [disabled]="isLoading || user.role?.role === 'ROLE_ADMIN'"
+          >
+            🗑️ Supprimer l'utilisateur
+          </button>
+          
+          <div class="action-info" *ngIf="user.role?.role === 'ROLE_ADMIN'">
+            <small>* Les comptes administrateurs ne peuvent pas être supprimés</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Message si utilisateur non trouvé -->
+  <div *ngIf="!isLoading && !user && !errorMessage" class="no-user-found">
+    <div class="no-user-content">
+      <h3>Utilisateur non trouvé</h3>
+      <p>L'utilisateur demandé n'existe pas ou n'est plus accessible.</p>
+      <button (click)="goBack()" class="btn btn-primary">
+        Retour à la liste
+      </button>
+    </div>
+  </div>
+</div>

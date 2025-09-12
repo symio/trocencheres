@@ -1,69 +1,66 @@
 <!-- src/app/features/auth/login/login.component.html -->
 <div class="login-container">
-  <div class="login-card">
-    <div class="login-header">
-      <h2>Connexion OAuth2</h2>
-      <p>Connectez-vous avec vos identifiants client</p>
+  <div class="login-form">
+    <h2 translate>Connexion</h2>
+
+    <!-- Messages d'erreur -->
+    <div *ngIf="error" class="alert alert-error">
+      {{ error }}
     </div>
 
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
-      <!-- Champ Client ID -->
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      
+      <!-- Pseudonyme -->
       <div class="form-group">
-        <label for="clientId">Pseudonyme</label>
+        <label for="clientId" translate>Pseudonyme (*)</label>
         <input
           type="text"
           id="clientId"
           formControlName="clientId"
-          class="form-control"
-          [class.is-invalid]="clientId?.invalid && clientId?.touched"
-          placeholder="Entrez votre Pseudonyme"
+          [class.error]="clientId?.invalid && clientId?.touched"
+          placeholder="Entrez votre pseudonyme"
           autocomplete="username"
         >
-        <div class="invalid-feedback" *ngIf="clientId?.invalid && clientId?.touched">
+        <div *ngIf="clientId?.invalid && clientId?.touched" class="error-message">
           <div *ngIf="clientId?.errors?.['required']">
             Le pseudonyme est requis
           </div>
         </div>
       </div>
 
-      <!-- Champ Client Secret -->
+      <!-- Mot de passe -->
       <div class="form-group">
-        <label for="clientSecret">Mot de passe</label>
+        <label for="clientSecret" translate>Mot de passe (*)</label>
         <input
           type="password"
           id="clientSecret"
           formControlName="clientSecret"
-          class="form-control"
-          [class.is-invalid]="clientSecret?.invalid && clientSecret?.touched"
+          [class.error]="clientSecret?.invalid && clientSecret?.touched"
           placeholder="Entrez votre mot de passe"
           autocomplete="current-password"
         >
-        <div class="invalid-feedback" *ngIf="clientSecret?.invalid && clientSecret?.touched">
+        <div *ngIf="clientSecret?.invalid && clientSecret?.touched" class="error-message">
           <div *ngIf="clientSecret?.errors?.['required']">
             Le mot de passe est requis
           </div>
         </div>
       </div>
 
-      <!-- Message d'erreur -->
-      <div class="alert alert-danger" *ngIf="error" role="alert">
-        {{ error }}
+      <!-- Boutons -->
+      <div class="form-actions">
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="loginForm.invalid || loading"
+        >
+          <span *ngIf="loading">Connexion en cours...</span>
+          <span *ngIf="!loading" translate>Se connecter</span>
+        </button>
+        
+        <a routerLink="/auth/register" class="btn btn-secondary" translate>
+          Pas de compte ? S'inscrire
+        </a>
       </div>
-
-      <!-- Bouton de connexion -->
-      <button
-        type="submit"
-        class="btn btn-primary btn-block"
-        [disabled]="loginForm.invalid || loading"
-      >
-        <span *ngIf="loading" class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
-        {{ loading ? 'Connexion...' : 'Se connecter' }}
-      </button>
     </form>
-
-    <!-- Lien vers l'inscription -->
-    <div class="login-footer">
-      <p>Pas encore de compte ? <a routerLink="/auth/register">S'inscrire</a></p>
-    </div>
   </div>
 </div>

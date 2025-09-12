@@ -1,0 +1,136 @@
+<!-- src/app/pages/users/admin-add-user/admin-add-user.component.html -->
+<div class="admin-user-container">
+    <div class="admin-user-form">
+        <div class="admin-header">
+            <h2 translate>
+                {{ isEditMode ? 'Modifier l\'utilisateur' : 'Créer un utilisateur' }}
+            </h2>
+            <div class="admin-badge">
+                <span class="badge">Mode Administrateur</span>
+            </div>
+        </div>
+
+        <!-- Messages -->
+        <div *ngIf="errorMessage" class="alert alert-error">
+            {{ errorMessage }}
+        </div>
+
+        <div *ngIf="successMessage" class="alert alert-success">
+            {{ successMessage }}
+        </div>
+
+        <form [formGroup]="adminForm" (ngSubmit)="onSubmit()">
+
+            <!-- Sélection du rôle (spécifique admin) -->
+            <div class="form-group admin-only">
+                <label for="role" translate>Rôle utilisateur (*)</label>
+                <select 
+                    id="role"
+                    formControlName="selectedRole"
+                    [class.error]="isFieldInvalid('selectedRole')"
+                    class="role-select"
+                    >
+                    <option value="">-- Sélectionner un rôle --</option>
+                    <option value="ROLE_USER">👤 Utilisateur Standard</option>
+                    <option value="ROLE_ADMIN">⚡ Administrateur</option>
+                </select>
+                <div *ngIf="isFieldInvalid('selectedRole')" class="error-message">
+                    Un rôle doit être sélectionné
+                </div>
+                <small class="help-text">Ce champ détermine les permissions de l'utilisateur dans l'application</small>
+            </div>
+
+            <!-- Crédit initial (spécifique admin) -->
+            <div class="form-group admin-only">
+                <label for="credit" translate>Crédit initial</label>
+                <input 
+                    id="credit"
+                    type="number" 
+                    formControlName="initialCredit"
+                    min="0"
+                    max="1000"
+                    step="10"
+                    placeholder="10"
+                    />
+                <small class="help-text">Crédit accordé à l'utilisateur lors de la création (par défaut: 10)</small>
+            </div>
+
+            <!-- Utilisation du composant register existant avec les données admin -->
+            <div class="register-section">
+                <app-register 
+                    [prefilledData]="prefilledData"
+                    [isAdminMode]="true"
+                    [hidePasswordFields]="isEditMode"
+                    (formReady)="onRegisterFormReady($event)"
+                    (registerSubmit)="onRegisterSubmit($event)">
+                </app-register>
+            </div>
+
+            <!-- Actions admin personnalisées -->
+            <div class="admin-actions">
+                <button 
+                    type="submit" 
+                    [disabled]="isLoading || !isFormValid()"
+                    class="btn btn-primary"
+                    >
+                    <span *ngIf="isLoading">
+                        <i class="spinner"></i>
+                        {{ isEditMode ? 'Modification...' : 'Création...' }}
+                    </span>
+                    <span *ngIf="!isLoading">
+                        {{ isEditMode ? '💾 Modifier l\'utilisateur' : '✨ Créer l\'utilisateur' }}
+                    </span>
+                </button>
+
+                <button 
+                    type="button" 
+                    (click)="onCancel()" 
+                    class="btn btn-secondary"
+                    >
+                    ❌ Annuler
+                </button>
+
+                <button 
+                    *ngIf="isEditMode"
+                    type="button" 
+                    (click)="onDelete()" 
+                    class="btn btn-danger"
+                    [disabled]="isLoading"
+                    >
+                    🗑️ Supprimer
+                </button>
+
+                <button 
+                    type="button" 
+                    (click)="onPreview()" 
+                    class="btn btn-info"
+                    [disabled]="!isFormValid()"
+                    >
+                    👁️ Aperçu
+                </button>
+            </div>
+        </form>
+
+        <!-- Aperçu des données (optionnel) -->
+        <div *ngIf="showPreview" class="preview-section">
+            <h3>Aperçu des données utilisateur</h3>
+            <div class="preview-content">
+                <div class="preview-item">
+                    <strong>Pseudo:</strong> {{ getPreviewData().pseudo }}
+                </div>
+                <div class="preview-item">
+                    <strong>Nom complet:</strong> {{ getPreviewData().nom }} {{ getPreviewData().prenom }}
+                </div>
+                <div class="preview-item">
+                    <strong>Email:</strong> {{ getPreviewData().email }}
+                </div>
+                <div class="preview-item">
+                    <strong>Rôle:</strong> {{ getRoleDisplayName(adminForm.get('selectedRole')?.value) }}
+                </div>
+                <div class="preview-item">
+                    <strong>Crédit initial:</strong> {{ adminForm.get('initialCredit')?.value || 10 }}€
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
