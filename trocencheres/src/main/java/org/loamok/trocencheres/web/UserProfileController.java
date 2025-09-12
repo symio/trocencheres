@@ -1,5 +1,6 @@
 package org.loamok.trocencheres.web;
 
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.AllArgsConstructor;
 import org.loamok.trocencheres.entity.Utilisateur;
 import org.loamok.trocencheres.manager.userService;
@@ -22,8 +23,8 @@ public class UserProfileController {
     
     private userService userManager;
     
+    @Operation(summary = "Inscription d'un utilisateur")
     @PostMapping("/register")
-//    public ResponseEntity<?> register(@Valid @RequestBody Utilisateur u) {
     public ResponseEntity<?> register(@RequestBody Utilisateur u) {
         try {
             final Utilisateur user = userManager.registerUser(u);
@@ -33,6 +34,7 @@ public class UserProfileController {
         }
     }
     
+    // @TODO remove me
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/admin/create")
     public ResponseEntity<?> adminCreate(@RequestBody Utilisateur u) {
