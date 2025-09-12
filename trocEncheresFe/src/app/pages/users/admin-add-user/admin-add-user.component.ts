@@ -168,7 +168,7 @@ export class AdminAddComponent implements OnInit {
                 this.isLoading = false;
                 this.registerComponent?.setLoadingState(false);
                 setTimeout(() => {
-                    this.router.navigate(['/admin/users']);
+                    this.router.navigate(['/users']);
                 }, 2000);
             },
             error: (error) => {
@@ -224,7 +224,7 @@ export class AdminAddComponent implements OnInit {
                 this.isLoading = false;
                 this.registerComponent?.setLoadingState(false);
                 setTimeout(() => {
-                    this.router.navigate(['/admin/users']);
+                    this.router.navigate(['/users']);
                 }, 2000);
             },
             error: (error) => {
@@ -238,7 +238,7 @@ export class AdminAddComponent implements OnInit {
     }
 
     onCancel(): void {
-        this.router.navigate(['/admin/users']);
+        this.router.navigate(['/users']);
     }
 
     onDelete(): void {
@@ -251,7 +251,7 @@ export class AdminAddComponent implements OnInit {
                     this.successMessage = 'Utilisateur supprimé avec succès !';
                     this.isLoading = false;
                     setTimeout(() => {
-                        this.router.navigate(['/admin/users']);
+                        this.router.navigate(['/users']);
                     }, 1500);
                 },
                 error: (error) => {

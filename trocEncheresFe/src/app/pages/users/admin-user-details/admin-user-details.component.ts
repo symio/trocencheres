@@ -72,12 +72,12 @@ export class AdminUserDetailsComponent implements OnInit, OnDestroy {
     }
 
     goBack(): void {
-        this.router.navigate(['/admin/users']);
+        this.router.navigate(['/users']);
     }
 
     editUser(): void {
         if (this.userPseudo) {
-            this.router.navigate(['/admin/users/edit', this.userPseudo]);
+            this.router.navigate(['/users/edit', this.userPseudo]);
         }
     }
 
@@ -95,7 +95,7 @@ export class AdminUserDetailsComponent implements OnInit, OnDestroy {
                     next: () => {
                         this.successMessage = `Utilisateur "${this.user.pseudo}" supprimé avec succès`;
                         setTimeout(() => {
-                            this.router.navigate(['/admin/users']);
+                            this.router.navigate(['/users']);
                         }, 2000);
                     },
                     error: (error) => {

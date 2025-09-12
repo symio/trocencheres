@@ -1,5 +1,5 @@
 // src/app/features/register/register.component.ts
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges, OnChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, AbstractControl, ValidationErrors } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
@@ -28,7 +28,7 @@ export interface PrefilledData {
     templateUrl: './register.component.html',
     styleUrls: ['./register.component.scss']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent implements OnInit, OnChanges {
     @Input() prefilledData: PrefilledData = {};
     @Input() isAdminMode: boolean = false;
     @Input() hidePasswordFields: boolean = false;
@@ -45,6 +45,13 @@ export class RegisterComponent implements OnInit {
         private router: Router,
         private userService: UserService
     ) { }
+
+
+    ngOnChanges(changes: SimpleChanges): void {
+        if (changes['prefilledData'] && changes['prefilledData'].currentValue) {
+            this.prefillForm();
+        }
+    }
 
     ngOnInit(): void {
         this.createForm();

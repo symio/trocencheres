@@ -34,70 +34,62 @@ public class SecurityConfig {
     private AuthenticationProvider authenticationProvider;
 
     @Bean
-public SecurityFilterChain oauth2ApiFilterChain(HttpSecurity http) throws Exception {
-    http
-            .securityMatcher("/**")
-            .authorizeHttpRequests(auth -> auth
-            // APIs ouvertes au public sans authentification
-            .requestMatchers(HttpMethod.POST, "/profil/register").permitAll()
-            .requestMatchers(HttpMethod.POST, "/authorize/token").permitAll()
-            
-            // SpringDoc OpenAPI / Swagger UI endpoints - Documentation API accessible publiquement
-            .requestMatchers("/v3/api-docs/**").permitAll()        // Spécification OpenAPI 3.0 en JSON/YAML
-            .requestMatchers("/swagger-ui/**").permitAll()         // Interface utilisateur Swagger (HTML, CSS, JS)
-            .requestMatchers("/swagger-ui.html").permitAll()       // Page principale de l'interface Swagger
-            .requestMatchers("/swagger-resources/**").permitAll()  // Métadonnées et configuration Swagger
-            .requestMatchers("/webjars/**").permitAll()           // Librairies JavaScript/CSS (Bootstrap, jQuery, etc.)
-            
-            // APIs basées sur les rôles uniquement
-            // Adresses - Gestion des adresses de retrait et personnelles
-            .requestMatchers(HttpMethod.GET, "/adresses").hasAnyRole("USER", "ADMIN")
-            .requestMatchers(HttpMethod.POST, "/adresses").hasAnyRole("USER", "ADMIN")
-            .requestMatchers(HttpMethod.PUT, "/adresses").hasAnyRole("USER", "ADMIN")
-            .requestMatchers(HttpMethod.DELETE, "/adresses").hasRole("ADMIN")
-            
-            // Articles à vendre - Gestion des articles mis aux enchères
-            .requestMatchers(HttpMethod.GET, "/articlesAVendres").hasAnyRole("USER", "ADMIN")
-            .requestMatchers(HttpMethod.POST, "/articlesAVendres").hasAnyRole("USER", "ADMIN")
-            .requestMatchers(HttpMethod.PUT, "/articlesAVendres").hasAnyRole("USER", "ADMIN")
-            .requestMatchers(HttpMethod.DELETE, "/articlesAVendres").hasRole("ADMIN")
-            
-            // Catégories - Classification des articles
-            .requestMatchers(HttpMethod.GET, "/categories").hasAnyRole("USER", "ADMIN")
-            .requestMatchers(HttpMethod.POST, "/categories").hasAnyRole("USER", "ADMIN")
-            .requestMatchers(HttpMethod.PUT, "/categories").hasAnyRole("USER", "ADMIN")
-            .requestMatchers(HttpMethod.DELETE, "/categories").hasRole("ADMIN")
-            
-            // Enchères - Gestion des enchères sur les articles
-            .requestMatchers(HttpMethod.GET, "/encheres").hasAnyRole("USER", "ADMIN")
-            .requestMatchers(HttpMethod.POST, "/encheres").hasAnyRole("USER", "ADMIN")
-            .requestMatchers(HttpMethod.PUT, "/encheres").hasAnyRole("USER", "ADMIN")
-            .requestMatchers(HttpMethod.DELETE, "/encheres").hasRole("ADMIN")
-            
-            // Rôles - Administration des rôles (Admin uniquement)
-            .requestMatchers(HttpMethod.GET, "/roles").hasRole("ADMIN")
-            .requestMatchers(HttpMethod.POST, "/roles").hasRole("ADMIN")
-            .requestMatchers(HttpMethod.PUT, "/roles").hasRole("ADMIN")
-            .requestMatchers(HttpMethod.DELETE, "/roles").hasRole("ADMIN")
-            
-            // Profils - Consultation des profils (Admin seulement pour la gestion globale)
-            .requestMatchers(HttpMethod.GET, "/profile").hasRole("ADMIN")
-            
-            // Utilisateurs - Gestion des comptes utilisateurs
-            .requestMatchers(HttpMethod.GET, "/utilisateurs").hasAnyRole("USER", "ADMIN")
-            .requestMatchers(HttpMethod.POST, "/utilisateurs").hasAnyRole("USER", "ADMIN")
-            .requestMatchers(HttpMethod.PUT, "/utilisateurs").hasAnyRole("USER", "ADMIN")
-            .requestMatchers(HttpMethod.DELETE, "/utilisateurs").hasRole("ADMIN")
-            
-            // Tout le reste nécessite authentification + scope
-            .anyRequest().access(this::hasAccessScopeAndAuthenticated)
-        )
-        .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
-        .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-        .csrf(csrf -> csrf.disable())
-        .cors(cors -> cors.configurationSource(corsConfigurationSource()));
-    return http.build();
-}
+    public SecurityFilterChain oauth2ApiFilterChain(HttpSecurity http) throws Exception {
+        http
+                .securityMatcher("/**")
+                .authorizeHttpRequests(auth -> auth
+                // APIs ouvertes au public sans authentification
+                .requestMatchers(HttpMethod.POST, "/profil/register").permitAll()
+                .requestMatchers(HttpMethod.POST, "/authorize/token").permitAll()
+                // SpringDoc OpenAPI / Swagger UI endpoints - Documentation API accessible publiquement
+                .requestMatchers("/v3/api-docs/**").permitAll() // Spécification OpenAPI 3.0 en JSON/YAML
+                .requestMatchers("/swagger-ui/**").permitAll() // Interface utilisateur Swagger (HTML, CSS, JS)
+                .requestMatchers("/swagger-ui.html").permitAll() // Page principale de l'interface Swagger
+                .requestMatchers("/swagger-resources/**").permitAll() // Métadonnées et configuration Swagger
+                .requestMatchers("/webjars/**").permitAll() // Librairies JavaScript/CSS (Bootstrap, jQuery, etc.)
+
+                // APIs basées sur les rôles uniquement
+                // Adresses - Gestion des addresses de retrait et personnelles
+                .requestMatchers(HttpMethod.GET, "/addresses", "/addresses/**").hasAnyRole("USER", "ADMIN")
+                .requestMatchers(HttpMethod.POST, "/addresses").hasAnyRole("USER", "ADMIN")
+                .requestMatchers(HttpMethod.PUT, "/addresses/**").hasAnyRole("USER", "ADMIN")
+                .requestMatchers(HttpMethod.DELETE, "/addresses/**").hasRole("ADMIN")
+                // Articles à vendre - Gestion des articles mis aux enchères
+                .requestMatchers(HttpMethod.GET, "/articlesAVendres", "/articlesAVendres/**").hasAnyRole("USER", "ADMIN")
+                .requestMatchers(HttpMethod.POST, "/articlesAVendres").hasAnyRole("USER", "ADMIN")
+                .requestMatchers(HttpMethod.PUT, "/articlesAVendres/**").hasAnyRole("USER", "ADMIN")
+                .requestMatchers(HttpMethod.DELETE, "/articlesAVendres/**").hasRole("ADMIN")
+                // Catégories - Classification des articles
+                .requestMatchers(HttpMethod.GET, "/categories", "/categories/**").hasAnyRole("USER", "ADMIN")
+                .requestMatchers(HttpMethod.POST, "/categories").hasAnyRole("USER", "ADMIN")
+                .requestMatchers(HttpMethod.PUT, "/categories/**").hasAnyRole("USER", "ADMIN")
+                .requestMatchers(HttpMethod.DELETE, "/categories/**").hasRole("ADMIN")
+                // Enchères - Gestion des enchères sur les articles
+                .requestMatchers(HttpMethod.GET, "/encheres", "/encheres/**").hasAnyRole("USER", "ADMIN")
+                .requestMatchers(HttpMethod.POST, "/encheres").hasAnyRole("USER", "ADMIN")
+                .requestMatchers(HttpMethod.PUT, "/encheres/**").hasAnyRole("USER", "ADMIN")
+                .requestMatchers(HttpMethod.DELETE, "/encheres/**").hasRole("ADMIN")
+                // Rôles - Administration des rôles (Admin uniquement)
+                .requestMatchers(HttpMethod.GET, "/roles", "/roles/**").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.POST, "/roles").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.PUT, "/roles/**").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.DELETE, "/roles/**").hasRole("ADMIN")
+                // Profils - Consultation des profils (Admin seulement pour la gestion globale)
+                .requestMatchers(HttpMethod.GET, "/profile").hasRole("ADMIN")
+                // Utilisateurs - Gestion des comptes utilisateurs
+                .requestMatchers(HttpMethod.GET, "/utilisateurs", "/utilisateurs/**").hasAnyRole("USER", "ADMIN")
+                .requestMatchers(HttpMethod.POST, "/utilisateurs").hasAnyRole("USER", "ADMIN")
+                .requestMatchers(HttpMethod.PUT, "/utilisateurs/**").hasAnyRole("USER", "ADMIN")
+                .requestMatchers(HttpMethod.DELETE, "/utilisateurs/**").hasRole("ADMIN")
+                // Tout le reste nécessite authentification + scope
+                .anyRequest().access(this::hasAccessScopeAndAuthenticated)
+            )
+            .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
+            .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+            .csrf(csrf -> csrf.disable())
+            .cors(cors -> cors.configurationSource(corsConfigurationSource()));
+        return http.build();
+    }
 
     /**
      * Vérifie que l'utilisateur a le scope "access" ET est authentifié Cette

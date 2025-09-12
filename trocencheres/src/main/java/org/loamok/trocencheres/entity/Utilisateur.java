@@ -59,9 +59,11 @@ public class Utilisateur implements UserDetails {
     // -- relations
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "no_adresse")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Adresse adresse;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_role", nullable = false)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Role role;
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @Column(name = "mot_de_passe", nullable = false, length = 69)
@@ -107,5 +109,15 @@ public class Utilisateur implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+    
+    @JsonProperty("adresseId")
+    public Integer getAdresseId() {
+        return adresse != null ? adresse.getId() : null;
+    }
+    
+    @JsonProperty("roleId")
+    public Integer getRoleId() {
+        return role != null ? role.getId() : null;
     }
 }
