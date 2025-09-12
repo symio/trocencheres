@@ -2,8 +2,7 @@ package org.loamok.trocencheres.manager;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import jakarta.transaction.Transactional;
-import java.util.Optional;
+import org.springframework.transaction.annotation.Transactional;
 import java.util.regex.Pattern;
 import org.loamok.trocencheres.entity.Adresse;
 import org.loamok.trocencheres.entity.Role;
@@ -33,8 +32,6 @@ public class UserManager implements userService {
     private RoleRepository rR;
     @Autowired
     private AdresseService aS;
-    @PersistenceContext
-    private EntityManager entityManager;
 
     @Override
     public Utilisateur registerUser(Utilisateur u) {
@@ -44,7 +41,7 @@ public class UserManager implements userService {
     @Override
     @Transactional
     public Utilisateur registerUser(Utilisateur u, Boolean isAdmin) {
-        Role roleUser =null;
+        Role roleUser = null;
         
         if(!isAdmin) {
             roleUser = rR.findByRole("ROLE_USER");
@@ -82,12 +79,11 @@ public class UserManager implements userService {
         user.setPassword("{bcrypt}" + passwordEncoder.encode(u.getPassword()));
         
         try {
-            entityManager.persist(user);
-            entityManager.flush();
+            uR.saveAndFlush(user);
             return user;
         } catch (RuntimeException e) {
-//            throw new RuntimeException("Error registering user : " + e.getMessage(), e);
-            throw new RuntimeException("Last name and First name are mandatory parameters. : " + user.toString());
+            throw new RuntimeException("Error registering user : " + e.getMessage(), e);
+//            throw new RuntimeException("Last name and First name are mandatory parameters. : " + user.toString());
         }
     }
 

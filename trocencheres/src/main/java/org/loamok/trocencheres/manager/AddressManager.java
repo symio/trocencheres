@@ -1,10 +1,11 @@
 package org.loamok.trocencheres.manager;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
-import jakarta.transaction.Transactional;
 import org.loamok.trocencheres.entity.Adresse;
+import org.loamok.trocencheres.repository.AdresseRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 
 /**
  *
@@ -13,11 +14,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class AddressManager implements AdresseService {
 
-    @PersistenceContext
-    private EntityManager entityManager;
+    @Autowired
+    private AdresseRepository aR;
     
     @Override
-    @Transactional
+    @Transactional(propagation = Propagation.REQUIRED)
     public Adresse registerAdresse(Adresse a) {
         Adresse adresse = Adresse.builder()
             .rue(a.getRue())
@@ -29,8 +30,7 @@ public class AddressManager implements AdresseService {
             throw new RuntimeException("address is not filled, all parameters are mandatory. : " + adresse.toString());
         
         try {
-            entityManager.persist(adresse);
-            entityManager.flush();
+            aR.saveAndFlush(adresse);
 
             return adresse;
         } catch (RuntimeException e) {

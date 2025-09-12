@@ -11,7 +11,6 @@ import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 import java.util.Arrays;
@@ -58,7 +57,7 @@ public class Utilisateur implements UserDetails {
     private @Builder.Default
     Integer credit = 10;
     // -- relations
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "no_adresse")
     private Adresse adresse;
     @ManyToOne(fetch = FetchType.EAGER)
@@ -68,7 +67,7 @@ public class Utilisateur implements UserDetails {
     @Column(name = "mot_de_passe", nullable = false, length = 69)
     private String password;
 
-//    @JsonIgnore
+    @JsonIgnore
     private String authority;
     @JsonIgnore
     private Boolean isAdmin;
